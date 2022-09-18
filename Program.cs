@@ -11,18 +11,40 @@ namespace Hotel_final
     {
 
         static void Main(string[] args)
-        {
+
+            //Login
+
             
+        {
+
+
+
+            Console.WriteLine("***************************");
+            Console.WriteLine("Bienvenido al area de login");
+            Console.WriteLine("***************************");
+
+            string usuario = "admin";
+            int contrasena = 123;
+
+            int opcion =0;
+
+            while (opcion != 2)
+            { 
+                
+            
+            
+            
+            }
            
-            conexionbd conexion = new conexionbd();
+            //conexionbd conexion = new conexionbd();
             //Console.WriteLine("estado conexion\n");
-            conexion.abrir();
-            Console.WriteLine("ingrese tipo habitacion ");
-            String TipoHabitacion = Console.ReadLine();
-            String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TipoHabitacion + "')";
-            SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
-            insertCommand.ExecuteNonQuery();
-            conexion.cerrar();
+            //conexion.abrir();
+            //Console.WriteLine("ingrese tipo habitacion ");
+            //String TipoHabitacion = Console.ReadLine();
+            //String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TipoHabitacion + "')";
+            //SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
+            //insertCommand.ExecuteNonQuery();
+            //conexion.cerrar();
            
             
             

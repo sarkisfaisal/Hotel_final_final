@@ -9,7 +9,7 @@ namespace Hotel_final
 {
     internal class conexionbd
     {
-        string cadena = "Data Source=DESKTOP-MT7IKMQ; Initial Catalog=Hotel; Integrated Security=True";
+        string cadena = "Data Source=DESKTOP-MT7IKMQ; Initial Catalog=hfinal; Integrated Security=True";
         public SqlConnection conectarbd = new SqlConnection();
 
         public conexionbd()
