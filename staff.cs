@@ -8,7 +8,7 @@ namespace Hotel_final
 {
     internal class staff
     {
-        int idturno { get;set}
+        int idturno { get; set; }
         string descripcion { get;set; }
 
         public staff(int idturno, string descripcion)
