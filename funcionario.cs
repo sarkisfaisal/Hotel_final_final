@@ -28,5 +28,7 @@ namespace Hotel_final
             this.nacionalidad = nacionalidad;
             this.contrasena = contrasena;
         }
+
+
     }
 }
