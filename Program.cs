@@ -69,7 +69,7 @@ namespace Hotel_final
                     Console.WriteLine("ingrese tipo habitacion");
                     String tipo = Console.ReadLine();
                     tipo_habitacion TH = new tipo_habitacion(tipo);
-                    String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.get(tipo) + "')";
+                    String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.GetTipoHabitacion() + "')";
                     SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
                     insertCommand.ExecuteNonQuery();
                     conexion.cerrar();
