@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 
 namespace Hotel_final
 {
@@ -53,17 +54,30 @@ namespace Hotel_final
 
             }
             
+            Console.WriteLine("Ingrese una opcion");
+            int opcion = int.Parse(Console.ReadLine());
 
-            int opcion =0;
 
-           /* while (opcion != 2)
-            { 
-                
+
+            switch (opcion)
+            {
+
+                case 1:
+                    conexionbd conexion = new conexionbd();
+                    Console.WriteLine("estado conexion\n");
+                    conexion.abrir();
+                    Console.WriteLine("ingrese tipo habitacion");
+                    String tipo = Console.ReadLine();
+                    tipo_habitacion TH = new tipo_habitacion(tipo);
+                    String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.get(tipo) + "')";
+                    SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
+                    insertCommand.ExecuteNonQuery();
+                    conexion.cerrar();
+
+                    break;
             
-            
-            
-            }*/
-           
+            }
+
             //conexionbd conexion = new conexionbd();
             //Console.WriteLine("estado conexion\n");
             //conexion.abrir();
@@ -73,11 +87,11 @@ namespace Hotel_final
             //SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
             //insertCommand.ExecuteNonQuery();
             //conexion.cerrar();
-           
-            
-            
-        
-        
+
+
+
+
+
         }//fin main
 
         static void menu()

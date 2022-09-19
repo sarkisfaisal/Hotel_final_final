@@ -9,11 +9,13 @@ namespace Hotel_final
 {
     internal class tipo_habitacion
     {
-        private string tipo { get; set; }
+        private string tipo { get => tipo; set => tipo =value; }
         public tipo_habitacion(string tipo)
         { 
             this.tipo = tipo;
         
         }
+
+        
     }//fin class tipo_habitacion
 }//fin namespace Hotel_final
