@@ -29,7 +29,7 @@ namespace Hotel_final
 
            int contador = 1;
 
-            while (contador <= 3)
+            while (contador < 3)
             {
                 Console.WriteLine("ingrese usuario ");
                 String user = Console.ReadLine();
@@ -45,9 +45,10 @@ namespace Hotel_final
                 } 
                 else
                 { 
-                    
+                    Console.WriteLine("");
                     Console.WriteLine("Login incorrecto");
                     contador++;
+                    Console.WriteLine(contador);
                 }
 
             }
