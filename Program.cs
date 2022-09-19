@@ -23,8 +23,34 @@ namespace Hotel_final
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
 
+
             string usuario = "admin";
-            int contrasena = 123;
+            string contrasena = "123";
+
+           int contador = 1;
+
+            while (contador <= 3)
+            {
+                Console.WriteLine("ingrese usuario ");
+                String user = Console.ReadLine();
+
+                Console.WriteLine("ingrese password ");
+                string palabra_secreta = Console.ReadLine();
+
+                if ((usuario == user) && (contrasena == palabra_secreta)) 
+                { 
+                    Console.WriteLine("login correcto");
+                    //menu();
+                    break;
+                } 
+                else
+                { 
+                    
+                    Console.WriteLine("Login incorrecto");
+                    contador++;
+                }
+
+            }
 
             int opcion =0;
 
