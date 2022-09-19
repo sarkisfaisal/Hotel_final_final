@@ -40,7 +40,7 @@ namespace Hotel_final
                 if ((usuario == user) && (contrasena == palabra_secreta)) 
                 { 
                     Console.WriteLine("login correcto");
-                    //menu();
+                    menu();
                     break;
                 } 
                 else
@@ -52,16 +52,17 @@ namespace Hotel_final
                 }
 
             }
+            
 
             int opcion =0;
 
-            while (opcion != 2)
+           /* while (opcion != 2)
             { 
                 
             
             
             
-            }
+            }*/
            
             //conexionbd conexion = new conexionbd();
             //Console.WriteLine("estado conexion\n");
@@ -78,6 +79,15 @@ namespace Hotel_final
         
         
         }//fin main
+
+        static void menu()
+        {
+            Console.WriteLine("***********************");
+            Console.WriteLine("BIENVENIDO A MENU HOTEL");
+            Console.WriteLine("***********************");
+            Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
+            Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
+        }
     
     }//fin class program
 
