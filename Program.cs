@@ -56,27 +56,51 @@ namespace Hotel_final
             
             Console.WriteLine("Ingrese una opcion");
             int opcion = int.Parse(Console.ReadLine());
+            bool bandera = true;
 
-
-
-            switch (opcion)
+            while (bandera)
             {
+                switch (opcion)
+                {
 
-                case 1:
-                    conexionbd conexion = new conexionbd();
-                    Console.WriteLine("estado conexion\n");
-                    conexion.abrir();
-                    Console.WriteLine("ingrese tipo habitacion");
-                    String tipo = Console.ReadLine();
-                    tipo_habitacion TH = new tipo_habitacion(tipo);
-                    String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.GetTipoHabitacion() + "')";
-                    SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
-                    insertCommand.ExecuteNonQuery();
-                    conexion.cerrar();
+                    case 1:
+                        conexionbd conexion = new conexionbd();
+                        Console.WriteLine("estado conexion\n");
+                        conexion.abrir();
+                        Console.WriteLine("ingrese tipo habitacion");
+                        String tipo = Console.ReadLine();
+                        tipo_habitacion TH = new tipo_habitacion(tipo);
+                        String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.GetTipoHabitacion() + "')";
+                        SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
+                        insertCommand.ExecuteNonQuery();
+                        conexion.cerrar();
 
-                    break;
+                        break;
+
+                    case 2:
+                        conexionbd conexion2 = new conexionbd();
+                        Console.WriteLine("estado conexion\n");
+                        conexion2.abrir();
+                        //Console.WriteLine("ingrese tipo habitacion");
+                        
+                        //tipo_habitacion TH2 = new tipo_habitacion(tipo);
+                        String insertQuery2 = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
+                        SqlCommand selectCommand = new SqlCommand(insertQuery2, conexion2.conectarbd);
+                        selectCommand.ExecuteNonQuery();
+                        string idtipo_habitacion1 =(string)selectCommand.ExecuteScalar();
+                        conexion2.cerrar();
+                        break ;
+
+                    case 0:
+                        bandera = false;
+                        break;
+
+                }//fin switch
+
+
+            }//fin while
+
             
-            }
 
             //conexionbd conexion = new conexionbd();
             //Console.WriteLine("estado conexion\n");
