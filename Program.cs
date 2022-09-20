@@ -84,11 +84,13 @@ namespace Hotel_final
                         //Console.WriteLine("ingrese tipo habitacion");
                         
                         //tipo_habitacion TH2 = new tipo_habitacion(tipo);
-                        String insertQuery2 = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
-                        SqlCommand selectCommand = new SqlCommand(insertQuery2, conexion2.conectarbd);
-                        selectCommand.ExecuteNonQuery();
-                        string idtipo_habitacion1 =(string)selectCommand.ExecuteScalar();
+                        String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
+                        SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
+                        selectCommand_Tipo_habitacion.ExecuteNonQuery();
+                        string tipo_tipo_habitacion = (string)selectCommand_Tipo_habitacion.ExecuteScalar();
+                        Console.WriteLine(tipo_tipo_habitacion);
                         conexion2.cerrar();
+                        bandera = false;
                         break ;
 
                     case 0:
