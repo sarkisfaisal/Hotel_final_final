@@ -26,7 +26,7 @@ namespace Hotel_final
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
 
-            Console.WriteLine("control 1")
+            Console.WriteLine("control 2");
 
 
             string usuario = "admin";
