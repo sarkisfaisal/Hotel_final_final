@@ -125,9 +125,10 @@ namespace Hotel_final
             Console.WriteLine("***********************");
             Console.WriteLine("BIENVENIDO A MENU HOTEL");
             Console.WriteLine("***********************");
+            Console.WriteLine();
             Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
-            Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
-        }
+            Console.WriteLine("3 ingresar funcionario   4 eliminar funcionario");
+        }   
     
     }//fin class program
 
