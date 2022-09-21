@@ -10,13 +10,24 @@ namespace Hotel_final
 {
     internal class rol
     {
-        private int idrol { get; set; }
-        private string descripcion { get; set; }
-
+        private int idrol;
+        private string descripcion;
+        
         public rol(string descripcion)
         {
             this.descripcion = descripcion;
         }
+      
+        public void setdescripcion(string descripcion) 
+        {
+            this.descripcion = descripcion;
+        }
+        public string Getdescripcion()
+        {
+            return descripcion;
+
+        }
+
         public rol() { 
             //constructor vacío para acceder a las funciones que no requieran nada 
         }
