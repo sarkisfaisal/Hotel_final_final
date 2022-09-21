@@ -17,7 +17,7 @@ namespace Hotel_final
         {
             this.descripcion = descripcion;
         }
-      
+    
         public void setdescripcion(string descripcion) 
         {
             this.descripcion = descripcion;
@@ -73,6 +73,23 @@ namespace Hotel_final
             }
         }
 
+        public string Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from rol where descripcion = '{this.descripcion}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol eliminado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 
 }
