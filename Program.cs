@@ -64,17 +64,61 @@ namespace Hotel_final
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("Ingrese una opcion");
+            static void menu_hotel()
+            {
+                bool fin = true;
+
+                while (fin)
+                {
+
+                    Console.WriteLine("**************************");
+                    Console.WriteLine("BIENVENIDO A MENU CLIENTES");
+                    Console.WriteLine("**************************");
+
+                    Console.WriteLine("1 Menu Cliente");
+                    Console.WriteLine("2 Menu Roles");
+                    Console.WriteLine("3 Menu pago");
+                    Console.WriteLine("ingrese una opcion");
+                    int op = int.Parse(Console.ReadLine());
+
+                    switch (op)
+                    {
+                        case 1:
+                            menu_cliente();
+                           
+                            break;
+                        case 2:
+                            menu_roles();
+                            break;
+                        //case 3:
+                            
+                            //break;
+                        case 0:
+                            fin = false;
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+
+            }//fin menu hotel
+
+
+//SARKIS: SE CREA MENU HOTEL PARA LLAMAR A SUB MENUS CLIENTE Y ROLES
+
+
+           /* Console.WriteLine("Ingrese una opcion");
             int opcion = int.Parse(Console.ReadLine());
             bool bandera = true;
-
-            while (bandera)
+            (while (bandera)
             {
                 switch (opcion)
                 {
 
                     case 1:
-                       /* conexionbd conexion = new conexionbd();
+                        conexionbd conexion = new conexionbd();
                         Console.WriteLine("estado conexion\n");
                         conexion.abrir();
                         Console.WriteLine("ingrese tipo habitacion");
@@ -100,7 +144,7 @@ namespace Hotel_final
                         selectCommand.ExecuteNonQuery();
                         string idtipo_habitacion1 = (string)selectCommand.ExecuteScalar();
                         conexion2.cerrar();
-                        break;*/
+                        break;
                     case 3:
                         menu_roles();
                         break;
@@ -127,15 +171,15 @@ namespace Hotel_final
 
 
 
-            //conexionbd conexion = new conexionbd();
-            //Console.WriteLine("estado conexion\n");
-            //conexion.abrir();
-            //Console.WriteLine("ingrese tipo habitacion ");
-            //String TipoHabitacion = Console.ReadLine();
-            //String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TipoHabitacion + "')";
-            //SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
-            //insertCommand.ExecuteNonQuery();
-            //conexion.cerrar();
+            conexionbd conexion = new conexionbd();
+            Console.WriteLine("estado conexion\n");
+            conexion.abrir();
+            Console.WriteLine("ingrese tipo habitacion ");
+            String TipoHabitacion = Console.ReadLine();
+            String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TipoHabitacion + "')";
+            SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
+            insertCommand.ExecuteNonQuery();
+            conexion.cerrar(); */
 
 
 
@@ -162,17 +206,17 @@ namespace Hotel_final
 
                 switch (op)
                 {
-                    case "1":
+                    case 1:
                         string crear = crear_cliente();
                         Console.WriteLine(crear);
                         break;
-                    case "2":
+                    case 2:
                         eliminar_cliente();
                         break;
-                    case "3":
+                    case 3:
                         mostrar_cliente();
                         break;
-                    case "0":
+                    case 0:
                         fin = false;
                         break;
                     default:
@@ -182,7 +226,7 @@ namespace Hotel_final
 
             }
             
-        }
+        }//fin menu clientes
 
     
 
@@ -254,7 +298,7 @@ namespace Hotel_final
             rol rol = new rol(descripcion);
             string respuesta = rol.insertar();
             return respuesta;
-        }
+        }//fin crear rol
 
         //se elimina el rol en la base de datos
         static string eliminar_rol()
@@ -265,7 +309,7 @@ namespace Hotel_final
             string respuesta = rol.Eliminar();
             return respuesta;
 
-        }
+        }//fin eliminar rol
 
         // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no está ese tipo de pago se retorna un mensaje "Tipo de pago no registrado".
         static void mostrar_tipo_pago()
@@ -287,7 +331,7 @@ namespace Hotel_final
                 Console.WriteLine("No hay tipos de pago registrados");
             }
             Console.ReadLine();
-        }
+        }//fin mostrar pago
 
         //Camila: aquí realize un método para pedir el tipo de pago que se va a realizar. 
         public int pedirtipo_pago()
@@ -314,6 +358,40 @@ namespace Hotel_final
 
             }
         }//fin pedir tipo pago
+
+        static void mostrar_cliente()
+        {
+            //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
+            cliente cliente = new cliente();
+            DataTable dtt = cliente.Listar();
+            if (dtt.Rows.Count > 0)
+            {
+                Console.WriteLine("Id \t Descripción");
+                int i = 0;
+                foreach (DataRow ren in dtt.Rows)
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay rclientes registrados");
+            }
+            Console.ReadLine();
+        }//fin mostrar cliente
+
+        static string crear_cliente()
+        {
+            //se inserta el rol en la base de datos
+            Console.WriteLine("Ingrese una descripción para el rol a crear");
+            string descripcion = Console.ReadLine();
+            rol rol = new rol(descripcion);
+            string respuesta = rol.insertar();
+            return respuesta;
+        }//fin crear cliente
+
+        //Sarkis: Mostrar clientes
 
 
     }//fin class program
