@@ -86,7 +86,7 @@ namespace Hotel_final
                         //Console.WriteLine("ingrese tipo habitacion");
 
                         //tipo_habitacion TH2 = new tipo_habitacion(tipo);
-<<<<<<< HEAD
+
                         String insertQuery2 = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
                         SqlCommand selectCommand = new SqlCommand(insertQuery2, conexion2.conectarbd);
                         selectCommand.ExecuteNonQuery();
@@ -96,7 +96,6 @@ namespace Hotel_final
                     case 3:
                         menu_roles();
                         break;
-=======
                         String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
                         SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
                         selectCommand_Tipo_habitacion.ExecuteNonQuery();
@@ -106,7 +105,7 @@ namespace Hotel_final
                         bandera = false;
                         break ;
 
->>>>>>> 0190ab719c6ab0013de88ba53fdbfd514cf96bec
+
                     case 0:
                         bandera = false;
                         break;
