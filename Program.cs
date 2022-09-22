@@ -15,7 +15,7 @@ namespace Hotel_final
 
         static void Main(string[] args)
 
-        //Login
+        //Login//
 
 
         {
@@ -25,6 +25,8 @@ namespace Hotel_final
             Console.WriteLine("***************************");
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
+
+            Console.WriteLine("control 2");
 
 
             string usuario = "admin";
@@ -96,6 +98,7 @@ namespace Hotel_final
                     case 3:
                         menu_roles();
                         break;
+=======
                         String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
                         SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
                         selectCommand_Tipo_habitacion.ExecuteNonQuery();
@@ -141,8 +144,83 @@ namespace Hotel_final
             Console.WriteLine();
             Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
             Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
+            Console.WriteLine("3 Administrar roles");
         }
-    
+
+        static void menu_roles()
+            //camila: se muestran las opciones para administrar roles
+        {
+            bool fin = true;
+            while (fin)
+            {
+                Console.WriteLine("***********************");
+                Console.WriteLine("Menú administración de roles");
+                Console.WriteLine("***********************");
+                Console.WriteLine("1 Crear un rol. ");
+                Console.WriteLine("2 Eliminar un rol. ");
+                Console.WriteLine("3 Ver roles existentes. ");
+                Console.WriteLine("0 Salir. ");
+                string opc = Console.ReadLine();
+
+                switch (opc)
+                {
+                    case "1":
+                        string crear = crear_rol();
+                        Console.WriteLine(crear);
+                        break;
+                    case "2":
+                        eliminar_rol(); 
+                        break;
+                    case "3":
+                        mostrar_roles();
+                        break;
+                    case "0":
+                        fin = false;
+                        break;
+                    default:
+                        break;
+                }
+                Console.ReadLine();
+            }
+
+        }
+
+        static void mostrar_roles() {
+            //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
+            rol rol = new rol("");
+            DataTable dtt = rol.Listar();
+            if (dtt.Rows.Count > 0)
+            {
+                Console.WriteLine("Id \t Descripción");
+                int i = 0;
+                foreach (DataRow ren in dtt.Rows)
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else 
+            {
+                Console.WriteLine("No hay roles registrados");
+            }
+            Console.ReadLine();
+        }
+
+        static string crear_rol()
+        {
+            //se inserta el rol en la base de datos
+            Console.WriteLine("Ingrese una descripción para el rol a crear");
+            string descripcion = Console.ReadLine();
+            rol rol = new rol(descripcion);
+            string respuesta = rol.insertar();
+            return respuesta;
+        }
+
+        static void eliminar_rol() {
+        
+
+        }
+
     }//fin class program
 
 }// fin namespace hotel

@@ -10,13 +10,24 @@ namespace Hotel_final
 {
     internal class rol
     {
-        private int idrol { get; set; }
-        private string descripcion { get; set; }
-
+        private int idrol;
+        private string descripcion;
+        
         public rol(string descripcion)
         {
             this.descripcion = descripcion;
         }
+    
+        public void setdescripcion(string descripcion) 
+        {
+            this.descripcion = descripcion;
+        }
+        public string Getdescripcion()
+        {
+            return descripcion;
+
+        }
+
         public rol() { 
             //constructor vacío para acceder a las funciones que no requieran nada 
         }
@@ -62,6 +73,23 @@ namespace Hotel_final
             }
         }
 
+        public string Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from rol where descripcion = '{this.descripcion}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol eliminado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 
 }
