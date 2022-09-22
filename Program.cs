@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
+using System.Data;
+using Azure.Core;
 
 namespace Hotel_final
 {
@@ -13,9 +15,9 @@ namespace Hotel_final
 
         static void Main(string[] args)
 
-            //Login
+        //Login
 
-            
+
         {
 
 
@@ -28,7 +30,7 @@ namespace Hotel_final
             string usuario = "admin";
             string contrasena = "123";
 
-           int contador = 1;
+            int contador = 1;
 
             while (contador < 3)
             {
@@ -38,14 +40,14 @@ namespace Hotel_final
                 Console.WriteLine("ingrese password ");
                 string palabra_secreta = Console.ReadLine();
 
-                if ((usuario == user) && (contrasena == palabra_secreta)) 
-                { 
+                if ((usuario == user) && (contrasena == palabra_secreta))
+                {
                     Console.WriteLine("login correcto");
                     menu();
                     break;
-                } 
+                }
                 else
-                { 
+                {
                     Console.WriteLine("");
                     Console.WriteLine("Login incorrecto");
                     contador++;
@@ -53,7 +55,7 @@ namespace Hotel_final
                 }
 
             }
-            
+
             Console.WriteLine("Ingrese una opcion");
             int opcion = int.Parse(Console.ReadLine());
             bool bandera = true;
@@ -82,8 +84,19 @@ namespace Hotel_final
                         Console.WriteLine("estado conexion\n");
                         conexion2.abrir();
                         //Console.WriteLine("ingrese tipo habitacion");
-                        
+
                         //tipo_habitacion TH2 = new tipo_habitacion(tipo);
+<<<<<<< HEAD
+                        String insertQuery2 = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
+                        SqlCommand selectCommand = new SqlCommand(insertQuery2, conexion2.conectarbd);
+                        selectCommand.ExecuteNonQuery();
+                        string idtipo_habitacion1 = (string)selectCommand.ExecuteScalar();
+                        conexion2.cerrar();
+                        break;
+                    case 3:
+                        menu_roles();
+                        break;
+=======
                         String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
                         SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
                         selectCommand_Tipo_habitacion.ExecuteNonQuery();
@@ -93,6 +106,7 @@ namespace Hotel_final
                         bandera = false;
                         break ;
 
+>>>>>>> 0190ab719c6ab0013de88ba53fdbfd514cf96bec
                     case 0:
                         bandera = false;
                         break;
@@ -102,7 +116,7 @@ namespace Hotel_final
 
             }//fin while
 
-            
+
 
             //conexionbd conexion = new conexionbd();
             //Console.WriteLine("estado conexion\n");
@@ -127,10 +141,9 @@ namespace Hotel_final
             Console.WriteLine("***********************");
             Console.WriteLine();
             Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
-            Console.WriteLine("3 ingresar funcionario   4 eliminar funcionario");
-        }   
+            Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
+        }
     
     }//fin class program
-
 
 }// fin namespace hotel
