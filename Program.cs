@@ -189,9 +189,9 @@ namespace Hotel_final
 
         static void menu_cliente()
         {
-            bool bandera = true;
+            bool fin = true;
 
-            while (bandera)
+            while (fin)
             {
 
                 Console.WriteLine("**************************");
@@ -211,7 +211,7 @@ namespace Hotel_final
                         Console.WriteLine(crear);
                         break;
                     case 2:
-                        eliminar_cliente();
+                        //eliminar_cliente();
                         break;
                     case 3:
                         mostrar_cliente();

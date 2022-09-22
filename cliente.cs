@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -123,7 +123,7 @@ namespace Hotel_final
             try
             {
                 dtt = new DataTable();
-                string selectUsuario = "Select * from pack";
+                string selectUsuario = "Select * from cliente";
                 SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
                 cmd.CommandType = CommandType.Text;
                 c.abrir();
@@ -144,13 +144,19 @@ namespace Hotel_final
         {
             conexionbd c = new conexionbd();
             try
-            {
-                string insert = $"insert into rol values ('{this.descripcion}')";
-                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+            {   string mostrar_pack = $"select * from pack";
+                SqlCommand cmd_mostrar_pack = new SqlCommand(mostrar_pack, c.conectarbd);
                 c.abrir();
-                comando.ExecuteNonQuery();
+                cmd_mostrar_pack.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol creado con éxito";
+                Console.WriteLine("seleccione un pack");
+                int pack = int.Parse(Console.ReadLine());
+                //string insert = $"insert into rol values ('{this.descripcion}')";
+                //SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                //c.abrir();
+                //comando.ExecuteNonQuery();
+                //c.cerrar();
+                return "cliente creado con éxito";
             }
             catch (Exception ex)
             {
@@ -158,7 +164,7 @@ namespace Hotel_final
             }
         }//fin insertar
 
-        public string Eliminar()
+        /*public string Eliminar()
         {
             conexionbd c = new conexionbd();
             try
@@ -174,7 +180,7 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }//fin eliminar
+        }//fin eliminar */
 
 
 
