@@ -98,7 +98,8 @@ namespace Hotel_final
                     case 3:
                         menu_roles();
                         break;
-=======
+
+
                         String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
                         SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
                         selectCommand_Tipo_habitacion.ExecuteNonQuery();
@@ -144,8 +145,10 @@ namespace Hotel_final
             Console.WriteLine();
             Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
             Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
-            Console.WriteLine("3 Administrar roles");
         }
+
+    
+
 
         static void menu_roles()
             //camila: se muestran las opciones para administrar roles
@@ -216,10 +219,65 @@ namespace Hotel_final
             return respuesta;
         }
 
-        static void eliminar_rol() {
-        
+        //se elimina el rol en la base de datos
+        static string eliminar_rol()
+        {
+            Console.WriteLine("Ingrese una descripción para el rol a eliminar");
+            string descripcion = Console.ReadLine();
+            rol rol = new rol(descripcion);
+            string respuesta = rol.Eliminar();
+            return respuesta;
 
         }
+
+        // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no está ese tipo de pago se retorna un mensaje "Tipo de pago no registrado".
+        static void mostrar_tipo_pago()
+        { 
+            tipo_pago pago = new tipo_pago("");
+            DataTable dtt = pago.Listar();
+            if (dtt.Rows.Count > 0)
+            {
+                Console.WriteLine("Descripción");
+                int i = 0;
+                foreach (DataRow ren in dtt.Rows)//la variable ren, ahora contendra el valor de cada una de las filas de dtt.
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay tipos de pago registrados");
+            }
+            Console.ReadLine();
+        }
+
+        //Camila: aquí realize un método para pedir el tipo de pago que se va a realizar. 
+        public int pedirtipo_pago()
+        {
+            bool fin = false;
+            while (!false)
+            {
+
+             mostrar_tipo_pago();
+                string respuesta = Console.ReadLine();
+                switch (respuesta)
+                {
+                    case "1":
+                    case "2":
+                    case "3":
+                        fin = true;
+                        return Convert.ToInt32(respuesta);
+                        break;
+                    default:
+                        Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente");
+                        Console.ReadLine();
+                        break;
+                }
+
+            }
+        }
+
 
     }//fin class program
 
