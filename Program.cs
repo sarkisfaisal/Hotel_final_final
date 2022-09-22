@@ -26,7 +26,7 @@ namespace Hotel_final
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
 
-            Console.WriteLine("control 2");
+            
 
 
             string usuario = "admin";
@@ -45,7 +45,7 @@ namespace Hotel_final
                 if ((usuario == user) && (contrasena == palabra_secreta))
                 {
                     Console.WriteLine("login correcto");
-                    menu();
+                    menu_cliente();
                     break;
                 }
                 else
@@ -58,6 +58,12 @@ namespace Hotel_final
 
             }
 
+            Console.WriteLine("***********************");
+            Console.WriteLine("BIENVENIDO A MENU HOTEL");
+            Console.WriteLine("***********************");
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.WriteLine("Ingrese una opcion");
             int opcion = int.Parse(Console.ReadLine());
             bool bandera = true;
@@ -68,7 +74,7 @@ namespace Hotel_final
                 {
 
                     case 1:
-                        conexionbd conexion = new conexionbd();
+                       /* conexionbd conexion = new conexionbd();
                         Console.WriteLine("estado conexion\n");
                         conexion.abrir();
                         Console.WriteLine("ingrese tipo habitacion");
@@ -82,9 +88,9 @@ namespace Hotel_final
                         break;
 
                     case 2:
-                        conexionbd conexion2 = new conexionbd();
-                        Console.WriteLine("estado conexion\n");
-                        conexion2.abrir();
+                        //conexionbd conexion2 = new conexionbd();
+                        //Console.WriteLine("estado conexion\n");
+                        //conexion2.abrir();
                         //Console.WriteLine("ingrese tipo habitacion");
 
                         //tipo_habitacion TH2 = new tipo_habitacion(tipo);
@@ -94,7 +100,7 @@ namespace Hotel_final
                         selectCommand.ExecuteNonQuery();
                         string idtipo_habitacion1 = (string)selectCommand.ExecuteScalar();
                         conexion2.cerrar();
-                        break;
+                        break;*/
                     case 3:
                         menu_roles();
                         break;
@@ -137,14 +143,45 @@ namespace Hotel_final
 
         }//fin main
 
-        static void menu()
+        static void menu_cliente()
         {
-            Console.WriteLine("***********************");
-            Console.WriteLine("BIENVENIDO A MENU HOTEL");
-            Console.WriteLine("***********************");
-            Console.WriteLine();
-            Console.WriteLine("1 ingresar cliente   2 eliminar cliente");
-            Console.WriteLine("1 ingresar funcionario   2 eliminar funcionario");
+            bool bandera = true;
+
+            while (bandera)
+            {
+
+                Console.WriteLine("**************************");
+                Console.WriteLine("BIENVENIDO A MENU CLIENTES");
+                Console.WriteLine("**************************");
+
+                Console.WriteLine("1 Ingresar cliente");
+                Console.WriteLine("2 eliminar cliente");
+                Console.WriteLine("2 Listar cliente");
+                Console.WriteLine("ingrese una opcion");
+                int op = int.Parse(Console.ReadLine());
+
+                switch (op)
+                {
+                    case "1":
+                        string crear = crear_cliente();
+                        Console.WriteLine(crear);
+                        break;
+                    case "2":
+                        eliminar_cliente();
+                        break;
+                    case "3":
+                        mostrar_cliente();
+                        break;
+                    case "0":
+                        fin = false;
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            
         }
 
     
@@ -207,7 +244,7 @@ namespace Hotel_final
                 Console.WriteLine("No hay roles registrados");
             }
             Console.ReadLine();
-        }
+        }//fin mostrar roles
 
         static string crear_rol()
         {
@@ -276,7 +313,7 @@ namespace Hotel_final
                 }
 
             }
-        }
+        }//fin pedir tipo pago
 
 
     }//fin class program

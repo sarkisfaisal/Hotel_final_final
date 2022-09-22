@@ -77,35 +77,106 @@ namespace Hotel_final
             return apellido;
         }
 
-        // public cliente()
-        //{
-        //constructor vacío para acceder a las funciones que no requieran nada 
-        //}
-
-        public DataTable Listar()
-            {
-                DataTable dtt;
-                conexionbd c = new conexionbd();
-                try
-                {
-                    dtt = new DataTable();
-                    string selectUsuario = "Select * from cliente";
-                    SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
-                    cmd.CommandType = CommandType.Text;
-                    c.abrir();
-
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(dtt);
-                    c.cerrar();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                return dtt;
-            }
+        public void SetNacionalidad(string nacionalidad)
+        {
+            this.nacionalidad = nacionalidad;
 
         }
+
+        public string GetIdNacionalidad()
+        {
+            return nacionalidad;
+        }
+
+        public void SetIdFechaNacimiento(string fecha_nacimiento)
+        {
+            this.fecha_nacimiento = fecha_nacimiento;
+
+        }
+
+        public string GetFechaNacimiento()
+        {
+            return fecha_nacimiento;
+        }
+
+        public void SetEstado(string estado)
+        {
+            this.estado = estado;
+        }
+
+        public string GetEstado()
+        {
+            return estado;
+
+        }
+
+
+         public cliente()
+        {
+        //constructor vacío para acceder a las funciones que no requieran nada 
+        }
+
+        public DataTable Listar()
+        {
+            DataTable dtt;
+            conexionbd c = new conexionbd();
+            try
+            {
+                dtt = new DataTable();
+                string selectUsuario = "Select * from pack";
+                SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
+                cmd.CommandType = CommandType.Text;
+                c.abrir();
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtt);
+                c.cerrar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtt;
+        }// fin listar
+
+        public string insertar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string insert = $"insert into rol values ('{this.descripcion}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol creado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }//fin insertar
+
+        public string Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from rol where descripcion = '{this.descripcion}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol eliminado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }//fin eliminar
+
+
+
     }//fin class cliente
 }//fin namespace
