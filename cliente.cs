@@ -10,7 +10,7 @@ namespace Hotel_final
 {
     internal class cliente
     {
-
+        private string identificacion;
         private int idpack;
         private int idstaff;
         private string nombre;
@@ -21,8 +21,9 @@ namespace Hotel_final
 
 
 
-        public cliente(int idpack, int idstaff, string nombre, string apellido, string nacionalidad, string fecha_nacimiento, string estado)
+        public cliente(string identificacion, int idpack, int idstaff, string nombre, string apellido, string nacionalidad, string fecha_nacimiento, string estado)
         {
+            this.identificacion = identificacion;
             this.idpack = idpack;
             this.idstaff = idstaff;
             this.nombre = nombre;
@@ -144,13 +145,51 @@ namespace Hotel_final
         {
             conexionbd c = new conexionbd();
             try
-            {   string mostrar_pack = $"select * from pack";
-                SqlCommand cmd_mostrar_pack = new SqlCommand(mostrar_pack, c.conectarbd);
+            {
                 c.abrir();
+                Console.WriteLine("ingrese identificacion en formato 12345678-9");
+                //hacer funcion que retorne si registro existe por rut ingresado
+                string identificacion = Console.ReadLine();
+                string mostrar_pack = $"select * from pack";
+
+                SqlCommand cmd_mostrar_pack = new SqlCommand(mostrar_pack, c.conectarbd);
+                
                 cmd_mostrar_pack.ExecuteNonQuery();
-                c.cerrar();
+                //c.cerrar();
                 Console.WriteLine("seleccione un pack");
+                
+                string mostrar_staff = $"select * from staff";
                 int pack = int.Parse(Console.ReadLine());
+                SqlCommand cmd_mostrar_staff = new SqlCommand(mostrar_staff, c.conectarbd);
+                Console.WriteLine("seleccione un staff");
+                int staff = int.Parse(Console.ReadLine());
+                try
+                {
+                    Console.WriteLine("ingrese identificacion");
+                    string identificacion = Console.ReadLine();
+                    Console.WriteLine("ingrese nombre cliente");
+                    string nombre = Console.ReadLine();
+                    Console.WriteLine("ingrese apellido");
+                    string apellido = Console.ReadLine();
+                    Console.WriteLine("ingrese nacionalidad");
+                    string nacionalidad = Console.ReadLine();
+                    Console.WriteLine("ingrese nombre estado activo o inactivo");
+                    string estado = Console.ReadLine();
+                    cliente cl = new cliente(identificacion, pack, staff, nombre, apellido, nacionalidad, estado);                   f,);
+                    string insert = $"insert into rol values ('{cl.identificacion}',{cl.nombre})";
+                    SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                }
+
+                catch (Exception e)
+                {
+                    return e.Message;
+                    {
+                    
+                }
+
+            }
+
+
                 //string insert = $"insert into rol values ('{this.descripcion}')";
                 //SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 //c.abrir();
