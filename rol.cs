@@ -22,7 +22,7 @@ namespace Hotel_final
         {
             this.descripcion = descripcion;
         }
-        public string Getdescripcion()
+        public string getdescripcion()
         {
             return descripcion;
 
@@ -80,7 +80,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{Getdescripcion}'";
+                string eliminar = $"delete from rol where descripcion = '{getdescripcion}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
