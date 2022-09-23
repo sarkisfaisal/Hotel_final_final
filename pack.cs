@@ -8,28 +8,28 @@ using System.Threading.Tasks;
 
 namespace Hotel_final
 {
-    internal class rol
+    internal class pack
     {
-        private int idrol;
         private string descripcion;
-        
-        public rol(string descripcion)
+        private DateTime fecha;
+
+        public pack(string descripcion) 
         {
             this.descripcion = descripcion;
         }
-    
-        public void setdescripcion(string descripcion) 
-        {
-            this.descripcion = descripcion;
-        }
-        public string Getdescripcion()
-        {
+
+        public string Getdescripcion() { 
             return descripcion;
-
         }
-
-        public rol() { 
-            //constructor vacío para acceder a las funciones que no requieran nada 
+        public DateTime Getfecha()
+        {
+            return fecha;
+        }
+        public void setdescripcion(string descripcion) { 
+            this.descripcion = descripcion;
+        }
+        public void setfecha(DateTime fecha) {
+        this.fecha = fecha;
         }
 
         public DataTable Listar()
@@ -39,7 +39,7 @@ namespace Hotel_final
             try
             {
                 dtt = new DataTable();
-                string selectUsuario = "Select * from rol";
+                string selectUsuario = "Select * from pack";
                 SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
                 cmd.CommandType = CommandType.Text;
                 c.abrir();
@@ -56,11 +56,12 @@ namespace Hotel_final
             return dtt;
         }
 
-        public string insertar() {
-            conexionbd c = new conexionbd();   
+        public string insertar()
+        {
+            conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{setdescripcion}')";
+                string insert = $"insert into pack values ('{Getdescripcion}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -78,12 +79,12 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{Getdescripcion|}'";
+                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol eliminado con éxito";
+                return "Pack eliminado con éxito";
             }
             catch (Exception ex)
             {
@@ -91,5 +92,4 @@ namespace Hotel_final
             }
         }
     }
-
 }

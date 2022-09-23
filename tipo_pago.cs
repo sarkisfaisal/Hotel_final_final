@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Hotel_final
 {
-    internal class tipo_pago
+    internal class pago
     {
-        string descripcion;
-        public tipo_pago(string descripcion)
+       private string descripcion;
+        public pago(string descripcion)
         {
             this.descripcion = descripcion;
         }
@@ -49,7 +49,42 @@ namespace Hotel_final
                 throw ex;
             }
             return dtt;
-        }
+        }//fin linstar
+        public string insertar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string insert = $"insert into tipo_pago values ('{setdescripcion}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Tipo de pago creado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }//fin insertar
+        public int Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from tipo_pago = '{Getdescripcion}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                int filas = comando.ExecuteNonQuery();
+                c.cerrar();
+                return filas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }//fin eliminar
     }
+}
 
 }

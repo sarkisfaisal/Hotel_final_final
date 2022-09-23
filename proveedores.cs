@@ -8,28 +8,33 @@ using System.Threading.Tasks;
 
 namespace Hotel_final
 {
-    internal class rol
+    internal class proveedores
     {
-        private int idrol;
-        private string descripcion;
-        
-        public rol(string descripcion)
-        {
-            this.descripcion = descripcion;
-        }
-    
-        public void setdescripcion(string descripcion) 
-        {
-            this.descripcion = descripcion;
-        }
-        public string Getdescripcion()
-        {
-            return descripcion;
+        private string rut;
+        private string razon_social;
 
+        public proveedores(string rut , string razon_social)
+        {
+            this.rut = rut;
+            this.razon_social = razon_social;
         }
-
-        public rol() { 
-            //constructor vacío para acceder a las funciones que no requieran nada 
+        public proveedores(string rut)
+        {
+            this.rut = rut;
+        }
+        public string get_rut()
+        {
+            return rut;
+        }
+        public string get_razon_social()
+        {
+            return razon_social;
+        }
+        public void setrut(string rut) {
+            this.rut = rut;
+        }
+        public void setrazonsocial(string razonsocial) { 
+            this.razon_social = razonsocial;
         }
 
         public DataTable Listar()
@@ -39,7 +44,7 @@ namespace Hotel_final
             try
             {
                 dtt = new DataTable();
-                string selectUsuario = "Select * from rol";
+                string selectUsuario = "Select * from proveedor";
                 SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
                 cmd.CommandType = CommandType.Text;
                 c.abrir();
@@ -55,41 +60,41 @@ namespace Hotel_final
             }
             return dtt;
         }
-
-        public string insertar() {
-            conexionbd c = new conexionbd();   
-            try
-            {
-                string insert = $"insert into rol values ('{setdescripcion}')";
-                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
-                c.abrir();
-                comando.ExecuteNonQuery();
-                c.cerrar();
-                return "Rol creado con éxito";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-
-        public string Eliminar()
+        //camila
+        public string insertar()
         {
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{Getdescripcion|}'";
-                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                string insert = $"insert into proveedor values ('{setrut}','{setrazonsocial}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol eliminado con éxito";
+                return "Proveedor creado con éxito";
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
-        }
-    }
+        }//fin insertar
 
+        public int Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from proveedor where rut= '{get_rut}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                int filas = comando.ExecuteNonQuery();
+                c.cerrar();
+                return filas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }//fin eliminar
+    }
 }
