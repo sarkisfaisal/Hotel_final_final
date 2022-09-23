@@ -95,7 +95,7 @@ public staff()
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from staff where staff = '{GetDescripcion}'";
+                string eliminar = $"delete from staff where descripcion = '{GetDescripcion}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
