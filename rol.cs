@@ -12,13 +12,13 @@ namespace Hotel_final
     {
         private int idrol;
         private string descripcion;
-        
+
         public rol(string descripcion)
         {
             this.descripcion = descripcion;
         }
-    
-        public void setdescripcion(string descripcion) 
+
+        public void setdescripcion(string descripcion)
         {
             this.descripcion = descripcion;
         }
@@ -28,7 +28,8 @@ namespace Hotel_final
 
         }
 
-        public rol() { 
+        public rol()
+        {
             //constructor vacío para acceder a las funciones que no requieran nada 
         }
 
@@ -54,10 +55,11 @@ namespace Hotel_final
                 throw ex;
             }
             return dtt;
-        }
+        }//fin listar
 
-        public string insertar() {
-            conexionbd c = new conexionbd();   
+        public string insertar()
+        {
+            conexionbd c = new conexionbd();
             try
             {
                 string insert = $"insert into rol values ('{setdescripcion}')";
@@ -71,14 +73,14 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }
+        }// fin insertar
 
         public string Eliminar()
         {
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{Getdescripcion|}'";
+                string eliminar = $"delete from rol where descripcion = '{Getdescripcion}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -89,7 +91,7 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }
+        }//fin eliminar
     }
 
 }

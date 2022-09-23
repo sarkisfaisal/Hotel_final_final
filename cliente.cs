@@ -140,61 +140,22 @@ namespace Hotel_final
             }
             return dtt;
         }// fin listar
-
+// ----------------------- FUNCION INSERTAR CLIENTE PENDIENTE -------
         public string insertar()
         {
             conexionbd c = new conexionbd();
             try
             {
+                Console.WriteLine("ingrese identificacion");
+                String identificacion = Console.ReadLine();
+                string ver_pack = $"insert * from pack";
+                SqlCommand cmd_pack = new SqlCommand(ver_pack, c.conectarbd);
+                string insert = $"insert into cliente values ('{setdescripcion}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
-                Console.WriteLine("ingrese identificacion en formato 12345678-9");
-                //hacer funcion que retorne si registro existe por rut ingresado
-                string identificacion = Console.ReadLine();
-                string mostrar_pack = $"select * from pack";
-
-                SqlCommand cmd_mostrar_pack = new SqlCommand(mostrar_pack, c.conectarbd);
-                
-                cmd_mostrar_pack.ExecuteNonQuery();
-                //c.cerrar();
-                Console.WriteLine("seleccione un pack");
-                
-                string mostrar_staff = $"select * from staff";
-                int pack = int.Parse(Console.ReadLine());
-                SqlCommand cmd_mostrar_staff = new SqlCommand(mostrar_staff, c.conectarbd);
-                Console.WriteLine("seleccione un staff");
-                int staff = int.Parse(Console.ReadLine());
-                try
-                {
-                    Console.WriteLine("ingrese identificacion");
-                    string identificacion = Console.ReadLine();
-                    Console.WriteLine("ingrese nombre cliente");
-                    string nombre = Console.ReadLine();
-                    Console.WriteLine("ingrese apellido");
-                    string apellido = Console.ReadLine();
-                    Console.WriteLine("ingrese nacionalidad");
-                    string nacionalidad = Console.ReadLine();
-                    Console.WriteLine("ingrese nombre estado activo o inactivo");
-                    string estado = Console.ReadLine();
-                    cliente cl = new cliente(identificacion, pack, staff, nombre, apellido, nacionalidad, estado);                   f,);
-                    string insert = $"insert into rol values ('{cl.identificacion}',{cl.nombre})";
-                    SqlCommand comando = new SqlCommand(insert, c.conectarbd);
-                }
-
-                catch (Exception e)
-                {
-                    return e.Message;
-                    {
-                    
-                }
-
-            }
-
-
-                //string insert = $"insert into rol values ('{this.descripcion}')";
-                //SqlCommand comando = new SqlCommand(insert, c.conectarbd);
-                //c.abrir();
-                //comando.ExecuteNonQuery();
-                //c.cerrar();
+                comando.ExecuteNonQuery();
+                cmd_pack.ExecuteNonQuery();
+                c.cerrar();
                 return "cliente creado con éxito";
             }
             catch (Exception ex)
