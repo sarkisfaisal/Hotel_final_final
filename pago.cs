@@ -33,13 +33,51 @@ namespace Hotel_final
 
         }// constructor
 
+        public void SetFecha(string fecha)
+        { 
+            this.fecha =fecha;
+        
+        }
+
+        public string GetFecha()
+        {
+            return fecha;
+
+        }
+
+        public void SetMoneda(string moneda)
+        {
+            this.moneda = moneda;
+
+        }
+
+        public string GetMoneda()
+        {
+            return moneda;
+
+        }
+
+        public void SetTotal(int total)
+        {
+            this.total = total;
+
+        }
+
+        public int GetTotal()
+        {
+            return total;
+
+        }
+
+
+
 
     }// fin class pago
 
 
 
 
-}
+}// fin namespace
 
    
-}
+
