@@ -70,7 +70,7 @@ namespace Hotel_final
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol creado con éxito";
+                return "Turno creado con éxito";
             }
             catch (Exception ex)
             {
@@ -83,12 +83,12 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{GetTipo}'";
+                string eliminar = $"delete from rol where tipo = '{GetTipo}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol eliminado con éxito";
+                return "Turno eliminado con éxito";
             }
             catch (Exception ex)
             {
