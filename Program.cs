@@ -207,8 +207,8 @@ namespace Hotel_final
                 switch (op)
                 {
                     case 1:
-                        string crear = crear_cliente();
-                        Console.WriteLine(crear);
+                        crear_cliente();
+                        
                         break;
                     case 2:
                         //eliminar_cliente();
@@ -234,8 +234,8 @@ namespace Hotel_final
         static void menu_roles()
             //camila: se muestran las opciones para administrar roles
         {
-            bool fin = true;
-            while (fin)
+            bool fin = false;
+            while (!fin)
             {
                 Console.WriteLine("***********************");
                 Console.WriteLine("Menú administración de roles");
@@ -259,7 +259,7 @@ namespace Hotel_final
                         mostrar_roles();
                         break;
                     case "0":
-                        fin = false;
+                        fin = true;
                         break;
                     default:
                         break;
