@@ -81,7 +81,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from origen where descripcion = '{getorigen}'";
+                string eliminar = $"delete from origen where nombre = '{getorigen}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
