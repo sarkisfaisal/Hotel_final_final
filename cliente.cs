@@ -34,46 +34,28 @@ namespace Hotel_final
         }
 
 
-            public void SetIdPack(int idpack)
-            {
-                this.idpack = idpack;
+            
+
         
-            }
 
-            public int GetIdPack()
-            { 
-                return this.idpack;
-            }
-
-        public void SetIdStaff(int idstaff)
-        {
-            this.idstaff = idstaff;
-
-        }
-
-        public int GetIdStaff()
-        {
-            return idstaff;
-        }
-
-        public void SetIdNombre(string nombre)
+        public void SetNombre(string nombre)
         {
             this.nombre = nombre;
 
         }
 
-        public string GetIdNombre()
+        public string GetNombre()
         {
             return nombre;
         }
 
-        public void SetIdApellido(string apellido)
+        public void SetApellido(string apellido)
         {
             this.apellido = apellido;
 
         }
 
-        public string GetIdApellido()
+        public string GetApellido()
         {
             return apellido;
         }
@@ -84,12 +66,12 @@ namespace Hotel_final
 
         }
 
-        public string GetIdNacionalidad()
+        public string GetNacionalidad()
         {
             return nacionalidad;
         }
 
-        public void SetIdFechaNacimiento(string fecha_nacimiento)
+        public void SetFechaNacimiento(string fecha_nacimiento)
         {
             this.fecha_nacimiento = fecha_nacimiento;
 
@@ -148,13 +130,22 @@ namespace Hotel_final
             {
                 Console.WriteLine("ingrese identificacion");
                 String identificacion = Console.ReadLine();
-                string ver_pack = $"insert * from pack";
-                SqlCommand cmd_pack = new SqlCommand(ver_pack, c.conectarbd);
-                string insert = $"insert into cliente values ('{setdescripcion}')";
+                Console.WriteLine("selecciones pack ");
+                Console.WriteLine("1 pack 1 ");
+                Console.WriteLine("2 pack 2 ");
+                Console.WriteLine("3 pack 3 ");
+                int idpack = int.Parse(Console.ReadLine());
+                Console.WriteLine("seleccione staff ");
+                Console.WriteLine("1 staff piso 6 diurno ");
+                Console.WriteLine("2 tstaff piso 7 vespertino ");
+                Console.WriteLine("3 tstaff piso 9 diurno");
+                int idstaff = int.Parse(Console.ReadLine());
+                
+                string insert = $"insert into cliente values ('{idpack}','{idstaff}''{SetNombre}''{SetApellido}''{SetNacionalidad}''{SetFechaNacimiento}''{SetEstado}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
-                cmd_pack.ExecuteNonQuery();
+                
                 c.cerrar();
                 return "cliente creado con éxito";
             }
@@ -164,12 +155,12 @@ namespace Hotel_final
             }
         }//fin insertar
 
-        /*public string Eliminar()
+        public string Eliminar()
         {
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{this.descripcion}'";
+                string eliminar = $"delete from cliente where identificacion = '{identificacion}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -180,7 +171,7 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }//fin eliminar */
+        }//fin eliminar 
 
 
 

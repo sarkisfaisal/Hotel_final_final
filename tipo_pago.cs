@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hotel_final
 {
-    internal class pago
+    internal class tipo_pago
     {
        private string descripcion;
         public pago(string descripcion)
