@@ -11,7 +11,7 @@ namespace Hotel_final
     internal class tipo_pago
     {
        private string descripcion;
-        public pago(string descripcion)
+        public tipo_pago(string descripcion)
         {
             this.descripcion = descripcion;
         }
@@ -87,4 +87,4 @@ namespace Hotel_final
     }
 }
 
-}
+

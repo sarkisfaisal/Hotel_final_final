@@ -36,7 +36,7 @@ namespace Hotel_final
 
             int contador = 1;
 
-            while (contador < 3)
+            while (contador < 4)
             {
                 Console.WriteLine("ingrese usuario ");
                 String user = Console.ReadLine();
@@ -68,7 +68,7 @@ namespace Hotel_final
 
             static void menu_hotel()
             {
-                bool fin = true;
+                bool fin = false;
 
                 while (!fin)
                 {
@@ -111,7 +111,7 @@ namespace Hotel_final
                             menu_pack();
                             break;
                         //case 8:
-                            
+
                             //menu_staff();
                             //break;
                         case 0:
@@ -125,85 +125,6 @@ namespace Hotel_final
                 }
 
             }//fin menu hotel
-
-
-            //SARKIS: SE CREA MENU HOTEL PARA LLAMAR A SUB MENUS CLIENTE Y ROLES
-
-
-            /* Console.WriteLine("Ingrese una opcion");
-             int opcion = int.Parse(Console.ReadLine());
-             bool bandera = true;
-             (while (bandera)
-             {
-                 switch (opcion)
-                 {
-
-                     case 1:
-                         conexionbd conexion = new conexionbd();
-                         Console.WriteLine("estado conexion\n");
-                         conexion.abrir();
-                         Console.WriteLine("ingrese tipo habitacion");
-                         String tipo = Console.ReadLine();
-                         tipo_habitacion TH = new tipo_habitacion(tipo);
-                         String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TH.GetTipoHabitacion() + "')";
-                         SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
-                         insertCommand.ExecuteNonQuery();
-                         conexion.cerrar();
-
-                         break;
-
-                     case 2:
-                         //conexionbd conexion2 = new conexionbd();
-                         //Console.WriteLine("estado conexion\n");
-                         //conexion2.abrir();
-                         //Console.WriteLine("ingrese tipo habitacion");
-
-                         //tipo_habitacion TH2 = new tipo_habitacion(tipo);
-
-                         String insertQuery2 = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
-                         SqlCommand selectCommand = new SqlCommand(insertQuery2, conexion2.conectarbd);
-                         selectCommand.ExecuteNonQuery();
-                         string idtipo_habitacion1 = (string)selectCommand.ExecuteScalar();
-                         conexion2.cerrar();
-                         break;
-                     case 3:
-                         menu_roles();
-                         break;
-
-
-                         String SelectTipo_habitacion = "SELECT tipo FROM tipo_habitacion WHERE idtipo_habitacion = 10";
-                         SqlCommand selectCommand_Tipo_habitacion = new SqlCommand(SelectTipo_habitacion, conexion2.conectarbd);
-                         selectCommand_Tipo_habitacion.ExecuteNonQuery();
-                         string tipo_tipo_habitacion = (string)selectCommand_Tipo_habitacion.ExecuteScalar();
-                         Console.WriteLine(tipo_tipo_habitacion);
-                         conexion2.cerrar();
-                         bandera = false;
-                         break ;
-
-
-                     case 0:
-                         bandera = false;
-                         break;
-
-                 }//fin switch
-
-
-             }//fin while
-
-
-
-             conexionbd conexion = new conexionbd();
-             Console.WriteLine("estado conexion\n");
-             conexion.abrir();
-             Console.WriteLine("ingrese tipo habitacion ");
-             String TipoHabitacion = Console.ReadLine();
-             String insertQuery = "INSERT INTO tipo_habitacion(tipo) VALUES('" + TipoHabitacion + "')";
-             SqlCommand insertCommand = new SqlCommand(insertQuery, conexion.conectarbd);
-             insertCommand.ExecuteNonQuery();
-             conexion.cerrar(); */
-
-
-
 
 
         }//fin main
@@ -230,7 +151,7 @@ namespace Hotel_final
                 {
                     case 1:
                         crear_cliente();
-                        
+
                         break;
                     case 2:
                         //eliminar_cliente();
@@ -254,8 +175,8 @@ namespace Hotel_final
 // ------------------- FIN MENU CLIENNTES ----------------------------
 
 
-        
- // ------------------- INICIO MENU ROLES       
+
+ // ------------------- INICIO MENU ROLES
         static void menu_roles()
         //camila: se muestran las opciones para administrar roles
         {
@@ -269,21 +190,21 @@ namespace Hotel_final
                 Console.WriteLine("2 Eliminar un rol. ");
                 Console.WriteLine("3 Ver roles existentes. ");
                 Console.WriteLine("0 Salir. ");
-                string opc = Console.ReadLine();
+                int opc = int.Parse(Console.ReadLine());
 
                 switch (opc)
                 {
-                    case "1":
+                    case 1:
                         string crear = crear_rol();
                         Console.WriteLine(crear);
                         break;
-                    case "2":
+                    case 2:
                         eliminar_rol();
                         break;
-                    case "3":
+                    case 3:
                         mostrar_roles();
                         break;
-                    case "0":
+                    case 0:
                         fin = true;
                         break;
                     default:
@@ -350,10 +271,10 @@ namespace Hotel_final
                 switch (opc)
                 {
                     case "1":
-                     
+
                         break;
                     case "2":
-                        
+
                         break;
                     case "3":
                         break;
@@ -533,7 +454,7 @@ namespace Hotel_final
         }//fin eliminar rol
 
         // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
-        
+
  // -------------------- INICIO MOSTRAR PAGO -------------------------
         /*static void mostrar_tipo_pago()
         {
@@ -555,7 +476,7 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }//fin mostrar pago
-         //Camila: aquí realize un método para pedir el tipo de pago que se va a realizar. 
+         //Camila: aquí realize un método para pedir el tipo de pago que se va a realizar.
         public int pedirtipo_pago()
         {
             bool fin = false;
@@ -589,7 +510,7 @@ namespace Hotel_final
             string descripcion = Console.ReadLine();
             pago tipo_pago = new pago(descripcion);
             int filas_afectadas = tipo_pago.Eliminar();
-            if (filas_afectadas == 0) 
+            if (filas_afectadas == 0)
             {
              return"No existe el tipo de pago ingresado, no se pudo eliminar";
 
@@ -623,7 +544,7 @@ namespace Hotel_final
             Console.ReadLine();
         }
 
-        //Inicio mostrar cliente 
+        //Inicio mostrar cliente
         static void mostrar_cliente()
         {
             //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
@@ -658,15 +579,15 @@ namespace Hotel_final
             return respuesta;
         }//fin crear cliente
 
-        
-        //Inicio realizar reservacion 
+
+        //Inicio realizar reservacion
         static string realizar_reservacion()
         {
             int tipo_habitacion = pedir_tipo_habitacion();
 
             return "";
         }
-        //Fin realizar reservacion 
+        //Fin realizar reservacion
         static int pedir_tipo_habitacion()
         {
             bool fin = true;
@@ -693,7 +614,7 @@ namespace Hotel_final
 
         //------------Proveedor------------
 
-        //Inicio crear proveedor 
+        //Inicio crear proveedor
         static string crear_proveedor()
         {
             bool fin = true;
@@ -794,7 +715,7 @@ namespace Hotel_final
                 }
         }
         return respuesta;
-    }//incio eliminar pack 
+    }//incio eliminar pack
         static string Eliminar_pack()
         {
             Console.WriteLine("Ingrese la descripción del pack que desea eliminar");
@@ -804,7 +725,7 @@ namespace Hotel_final
             return resultado;
         }//fin eliminar pack
 
-        //inicio mostrar pack 
+        //inicio mostrar pack
         static void Mostrar_pack()
         {
             pack pack = new pack("");
@@ -824,7 +745,7 @@ namespace Hotel_final
                 Console.WriteLine("No hay pack´s registrados");
             }
             Console.ReadLine();
-        }//fin listar pack 
+        }//fin listar pack
         //fin de pack
 
 
