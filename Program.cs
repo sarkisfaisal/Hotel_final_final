@@ -61,7 +61,7 @@ namespace Hotel_final
             }
 
             Console.WriteLine("***********************");
-            Console.WriteLine("BIENVENIDO A MENU HOTEL");
+            Console.WriteLine("BIENVENIDO A HOTEL");
             Console.WriteLine("***********************");
             Console.WriteLine();
             Console.WriteLine();
@@ -70,7 +70,7 @@ namespace Hotel_final
             {
                 bool fin = true;
 
-                while (fin)
+                while (!fin)
                 {
 
                     Console.WriteLine("**************************");
@@ -84,14 +84,15 @@ namespace Hotel_final
                     Console.WriteLine("5 Menú proveedores");
                     Console.WriteLine("6 Menú insumos");
                     Console.WriteLine("7 Menú pack");
+                    Console.WriteLine("8 Menú staff");
                     Console.WriteLine("Ingrese una opción");
                     int op = int.Parse(Console.ReadLine());
 
                     switch (op)
                     {
-                        case 1:
-                            menu_cliente();
-                            break;
+                        //case 1:
+                            //menu_cliente();
+                            //break;
                         case 2:
                             menu_roles();
                             break;
@@ -109,8 +110,12 @@ namespace Hotel_final
                         case 7:
                             menu_pack();
                             break;
+                        //case 8:
+                            
+                            //menu_staff();
+                            //break;
                         case 0:
-                            fin = false;
+                            fin = true;
                             break;
                         default:
                             break;
@@ -203,6 +208,7 @@ namespace Hotel_final
 
         }//fin main
 
+// ------------------ INICIO MENU CLIENTE ----------------------------
         static void menu_cliente()
         {
             bool fin = true;
@@ -245,9 +251,11 @@ namespace Hotel_final
 
         }//fin menu clientes
 
+// ------------------- FIN MENU CLIENNTES ----------------------------
 
 
-
+        
+ // ------------------- INICIO MENU ROLES       
         static void menu_roles()
         //camila: se muestran las opciones para administrar roles
         {
@@ -286,6 +294,8 @@ namespace Hotel_final
             }
 
         }//fin menú roles
+
+// -------------------- FIN MENU ROLES ---------------------------
 
         static void menu_reservaciones()
         {
@@ -523,9 +533,11 @@ namespace Hotel_final
         }//fin eliminar rol
 
         // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
-        static void mostrar_tipo_pago()
+        
+ // -------------------- INICIO MOSTRAR PAGO -------------------------
+        /*static void mostrar_tipo_pago()
         {
-            pago pago = new pago("");
+            tipo_pago tipo_pago = new tipo_pago("");
             DataTable dtt = pago.Listar();
             if (dtt.Rows.Count > 0)
             {
@@ -567,7 +579,9 @@ namespace Hotel_final
                 }
 
             }
-        }//fin pedir tipo pago
+        }//fin pedir tipo pago */
+
+// ------------------- FIN PEDIR TIPO PAGO --------------------------
 
         static string eliminar_tipo_pago()
         {
