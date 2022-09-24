@@ -271,7 +271,7 @@ namespace Hotel_final
         {
             Console.WriteLine("Ingrese una descripción para el tipo de pago a eliminar");
             string descripcion = Console.ReadLine();
-            pago tipo_pago = new pago(descripcion);
+            pago tipo_pago = new pago();
             int filas_afectadas = tipo_pago.Eliminar();
             if (filas_afectadas == 0)
             {
@@ -286,6 +286,29 @@ namespace Hotel_final
         }//fin tipos de pago
 
         // Camila: se traen los tipo_habitacion de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
+
+        //---------Inicio Habitaciones---------
+
+        public void mostrar_habitaciones_disponibles()
+        {
+            habitacion hab = new habitacion(0, 0, 0, 0, "");
+            DataTable datos = hab.ListarDisponibles();
+            if (datos.Rows.Count > 0)
+            {
+                Console.WriteLine("Id      Tipo Habitación       Número      Piso       Disponibilidad");
+                int i = 0;
+                foreach (DataRow ren in datos.Rows)
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1] + "\t\t\t" + ren[2] + "\t  " + ren[3] + "\t\t" + ren[4]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay  habitaciones disponibles.");
+            }
+        }
+
 
 
     }//fin class program
