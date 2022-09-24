@@ -11,6 +11,8 @@ using System.Reflection.PortableExecutable;
 using Microsoft.Identity.Client;
 
 namespace Hotel_final
+
+
 {
     class Program
     {
@@ -47,7 +49,7 @@ namespace Hotel_final
                 if ((usuario == user) && (contrasena == palabra_secreta))
                 {
                     Console.WriteLine("login correcto");
-                    menu_cliente();
+                   // menu_cliente();
                     break;
                 }
                 else
@@ -99,16 +101,16 @@ namespace Hotel_final
                         //case 3
                         //break;
                         case 4:
-                            menu_reservaciones();
-                            break;
+                            //menu_reservaciones();
+                            //break;
                         case 5:
-                            menu_proveedores();
-                            break;
+                            //menu_proveedores();
+                            //break;
                         case 6:
-                            menu_insumos();
-                            break;
+                            //menu_insumos();
+                            //break;
                         case 7:
-                            menu_pack();
+                            //menu_pack();
                             break;
                         //case 8:
                             
@@ -209,7 +211,7 @@ namespace Hotel_final
         }//fin main
 
 // ------------------ INICIO MENU CLIENTE ----------------------------
-        static void menu_cliente()
+       /* static void menu_cliente()
         {
             bool fin = true;
 
@@ -229,14 +231,14 @@ namespace Hotel_final
                 switch (op)
                 {
                     case 1:
-                        crear_cliente();
+                        //crear_cliente();
                         
                         break;
                     case 2:
                         //eliminar_cliente();
                         break;
                     case 3:
-                        mostrar_cliente();
+                       // mostrar_cliente();
                         break;
                     case 0:
                         fin = false;
@@ -249,13 +251,13 @@ namespace Hotel_final
 
             }
 
-        }//fin menu clientes
+        }//fin menu clientes */
 
 // ------------------- FIN MENU CLIENNTES ----------------------------
 
 
         
- // ------------------- INICIO MENU ROLES       
+ // ------------------- INICIO MENU ROLES   -------------------------------    
         static void menu_roles()
         //camila: se muestran las opciones para administrar roles
         {
@@ -295,9 +297,60 @@ namespace Hotel_final
 
         }//fin menú roles
 
-// -------------------- FIN MENU ROLES ---------------------------
+        // --------------- INICIO MOSTRAR ROLES ---------------
+        static void mostrar_roles()
+        {
+            //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
+            rol rol = new rol("");
+            DataTable dtt = rol.Listar();
+            if (dtt.Rows.Count > 0)
+            {
+                Console.WriteLine("Id \t Descripción");
+                int i = 0;
+                foreach (DataRow ren in dtt.Rows)
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay roles registrados");
+            }
+            Console.ReadLine();
+        }//fin mostrar roles
 
-        static void menu_reservaciones()
+        // ----------------- FIN MOSTRAR ROLES ------------------
+
+        //-------- INICIO CREAR ROL ---------------------
+
+        static string crear_rol()
+        {
+            //se inserta el rol en la base de datos
+            Console.WriteLine("Ingrese una descripción para el rol a crear");
+            string descripcion = Console.ReadLine();
+            rol rol = new rol(descripcion);
+            string respuesta = rol.insertar();
+            return respuesta;
+        }//fin crear rol
+
+        // --------------- FIN CREAR ROL ---------------
+
+        //se elimina el rol en la base de datos
+        static string eliminar_rol()
+        {
+            Console.WriteLine("Ingrese una descripción para el rol a eliminar");
+            string descripcion = Console.ReadLine();
+            rol rol = new rol(descripcion);
+            string respuesta = rol.Eliminar();
+            return respuesta;
+
+        }//fin eliminar rol
+         // -------------------- FIN ELIMINAR ROL ---------------------------
+
+ // ------------------- INICIO MENU RESERVACIONES ---------------------
+        
+       /* static void menu_reservaciones()
         {
             bool fin = true;
             while (fin)
@@ -314,7 +367,7 @@ namespace Hotel_final
                 switch (opc)
                 {
                     case "1":
-                        realizar_reservacion();
+                       // realizar_reservacion();
                         break;
                     case "2":
                         break;
@@ -330,10 +383,12 @@ namespace Hotel_final
                 Console.ReadLine();
             }
 
-        }//fin menú reservaciones
+        }//fin menú reservaciones */
 
+// ---------------------- FIN MENU RESERVACIONES ---------------------
 
-        static void menu_tipo_pago()
+// -------------------- INICIO MENU TIPO PAGO ---------------------
+       /* static void menu_tipo_pago()
         {
             bool fin = true;
             while (fin)
@@ -386,17 +441,17 @@ namespace Hotel_final
                 switch (opc)
                 {
                     case "1":
-                        respuesta = crear_proveedor();
-                        Console.WriteLine(respuesta);
+                       // respuesta = crear_proveedor();
+                        //Console.WriteLine(respuesta);
                         break;
                     case "2":
-                        respuesta = eliminar_proveedor();
-                        Console.WriteLine(respuesta);
+                        //respuesta = eliminar_proveedor();
+                        //Console.WriteLine(respuesta);
                         break;
                     case "3":
                         break;
                     case "4":
-                        mostrar_proveedores();
+                        //mostrar_proveedores();
                         break;
                     case "0":
                         fin = false;
@@ -427,8 +482,8 @@ namespace Hotel_final
                 switch (opc)
                 {
                     case "1":
-                        respuesta = crear_insumo();
-                        Console.WriteLine(respuesta);
+                        //respuesta = crear_insumo();
+                        //Console.WriteLine(respuesta);
                         break;
                     case "2":
                         break;
@@ -465,15 +520,15 @@ namespace Hotel_final
                 switch (opc)
                 {
                     case "1":
-                        respuesta = crear_pack();
-                        Console.WriteLine(respuesta);
+                        //respuesta = crear_pack();
+                        //Console.WriteLine(respuesta);
                         break;
                     case "2":
-                        respuesta = Eliminar_pack();
-                        Console.WriteLine(respuesta);
+                        //respuesta = Eliminar_pack();
+                        //Console.WriteLine(respuesta);
                         break;
                     case "3":
-                         Mostrar_pack();
+                         //Mostrar_pack();
                         break;
                     case "4":
                         break;
@@ -489,48 +544,7 @@ namespace Hotel_final
         }
 
         //camila=roles
-        static void mostrar_roles()
-        {
-            //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
-            rol rol = new rol("");
-            DataTable dtt = rol.Listar();
-            if (dtt.Rows.Count > 0)
-            {
-                Console.WriteLine("Id \t Descripción");
-                int i = 0;
-                foreach (DataRow ren in dtt.Rows)
-                {
-                    Console.WriteLine(ren[0] + "\t" + ren[1]);
-                    i++;
-                }
-            }
-            else
-            {
-                Console.WriteLine("No hay roles registrados");
-            }
-            Console.ReadLine();
-        }//fin mostrar roles
-
-        static string crear_rol()
-        {
-            //se inserta el rol en la base de datos
-            Console.WriteLine("Ingrese una descripción para el rol a crear");
-            string descripcion = Console.ReadLine();
-            rol rol = new rol(descripcion);
-            string respuesta = rol.insertar();
-            return respuesta;
-        }//fin crear rol
-
-        //se elimina el rol en la base de datos
-        static string eliminar_rol()
-        {
-            Console.WriteLine("Ingrese una descripción para el rol a eliminar");
-            string descripcion = Console.ReadLine();
-            rol rol = new rol(descripcion);
-            string respuesta = rol.Eliminar();
-            return respuesta;
-
-        }//fin eliminar rol
+        
 
         // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
         
@@ -583,7 +597,10 @@ namespace Hotel_final
 
 // ------------------- FIN PEDIR TIPO PAGO --------------------------
 
-        static string eliminar_tipo_pago()
+
+
+ // ------------------- INICIO ELIMINAR TIPO PAGO -------------------
+       /* static string eliminar_tipo_pago()
         {
             Console.WriteLine("Ingrese una descripción para el tipo de pago a eliminar");
             string descripcion = Console.ReadLine();
@@ -599,10 +616,17 @@ namespace Hotel_final
                 return "Registro eliminado exitosamente";
             }
 
-        }//fin tipos de pago
+        }//fin tipos de pago */
+
+
+// ----------------------- FIN ELIMINAR TIPO PAGO ------------------
+
+
 
         // Camila: se traen los tipo_habitacion de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
-        static void mostrar_tipo_habitacion()
+
+//----------------------- INICIO MOSTRAR TIPO HABITACION ----------
+        /*static void mostrar_tipo_habitacion()
         {
             pago pago = new pago("");
             DataTable dtt = pago.Listar();
@@ -621,9 +645,11 @@ namespace Hotel_final
                 Console.WriteLine("No hay tipos de habitación registrados");
             }
             Console.ReadLine();
-        }
+        }// fin mostrar tipo habiracion */
         //Sarkis 
-        static void mostrar_cliente()
+
+// ----------- INICIO MOSTRAR CLIENTE ----------------------
+        /*static void mostrar_cliente()
         {
             //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
             cliente cliente = new cliente();
@@ -643,9 +669,11 @@ namespace Hotel_final
                 Console.WriteLine("No hay rclientes registrados");
             }
             Console.ReadLine();
-        }//fin mostrar cliente
+        }//fin mostrar cliente */
 
-        static string crear_cliente()
+    // ------------- INICIO CREAR CLIENTE ------------------------
+
+       /* static string crear_cliente()
         {
             //se inserta el rol en la base de datos
             Console.WriteLine("Ingrese una descripción para el rol a crear");
@@ -653,18 +681,23 @@ namespace Hotel_final
             rol rol = new rol(descripcion);
             string respuesta = rol.insertar();
             return respuesta;
-        }//fin crear cliente
+        }//fin crear cliente */
+
+// -------------------- FIN CREAR CLIENTE ----------------------
 
         //Sarkis: Mostrar clientes
-
-        static string realizar_reservacion()
+// ---------------- INICIO REALIZAR RESERVACION ------------------
+       /* static string realizar_reservacion()
         {
             int tipo_habitacion = pedir_tipo_habitacion();
 
             return "";
-        }
+        }//fin realizar reservacion */
 
-        static int pedir_tipo_habitacion()
+    // FIN REALIZAR RESERVACION
+
+// ------------------- INICIO PEDIR TIPO HABITACION ---------------
+        /*static int pedir_tipo_habitacion()
         {
             bool fin = true;
             while (fin)
@@ -686,9 +719,11 @@ namespace Hotel_final
                 }
             }
             return 0;
-        }
+        }//fin pedir tipo habitacion */
 
         //incio proveedor camilita
+
+    // ------------------------ INICIO CREAR PROVEEDOR -----------
         static string crear_proveedor()
         {
             bool fin = true;
@@ -740,7 +775,7 @@ namespace Hotel_final
             }
         }//fin eliminar proveedor
 
-        static void mostrar_proveedores()
+       /* static void mostrar_proveedores()
         {
             proveedores pago = new proveedores("");
             DataTable dtt = pago.Listar();
@@ -760,12 +795,17 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }//fin mostrar proveedores
-        //fin proveedor
+        //fin proveedor */
+        //fin proveedor */
 
-        static string crear_insumo()
-        {
-            return "";
-        }
+        // ------------------ FIN PROVEEDOR -----------------------
+
+        // ----------------- INICIO CREAR INSUMO ------------------
+
+       // static string crear_insumo()
+        //{
+           // return "";
+        //}
         //pendiente
     //Camilita inicio pack
     static string crear_pack()
@@ -788,17 +828,24 @@ namespace Hotel_final
                 }
         }
         return respuesta;
+
+
+        // ----- INICIO ELIMINAR PACK --------------------
     }
-        static string Eliminar_pack()
+        /*static string Eliminar_pack()
         {
             Console.WriteLine("Ingrese la descripción del pack que desea eliminar");
             string descripcion= Console.ReadLine();
             pack p = new pack(descripcion);
             string resultado = p.Eliminar();
             return resultado;
-        }//fin eliminar pack
+        }//fin eliminar pack */
 
-        static void Mostrar_pack()
+    //--------------- FIN ELIMINAR PACK ------------------------------
+
+
+    // --------------- INICIO MOSTRAR PACK ----------------------
+       /* static void Mostrar_pack()
         {
             pack pack = new pack("");
             DataTable dtt = pack.Listar();
@@ -818,9 +865,9 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }//fin listar pack 
-        //fin de pack
+        //fin de mostrar pack */
 
-
+    //------------------- FIN MOSTRAR PACK ----------------------
 
 
     }//fin class program

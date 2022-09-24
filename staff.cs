@@ -44,6 +44,36 @@ public staff()
         {
             DataTable dtt;
             conexionbd c = new conexionbd();
+
+            try
+
+            {
+
+
+
+                dtt = new DataTable();
+                string selectUsuario = "Select * from turno";
+                SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
+                cmd.CommandType = CommandType.Text;
+                Console.WriteLine("seleccione id turno");
+                string idturno = Console.ReadLine();
+                c.abrir();
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtt);
+                c.cerrar();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            return dtt;
+
             try
 
             {
@@ -72,11 +102,7 @@ public staff()
             conexionbd c = new conexionbd();
             try
             {
-                Console.WriteLine("seleccione turno");
-                Console.WriteLine("1 diurno");
-                Console.WriteLine("2 vespertino");
-                Console.WriteLine("3 nocturno");
-                string idturno = Console.ReadLine();
+                
                 string insert = $"insert into staff values ('{idturno}','{SetDescripcion}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
