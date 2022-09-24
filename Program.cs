@@ -622,7 +622,8 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }
-        //Sarkis 
+
+        //Inicio mostrar cliente 
         static void mostrar_cliente()
         {
             //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
@@ -640,14 +641,16 @@ namespace Hotel_final
             }
             else
             {
-                Console.WriteLine("No hay rclientes registrados");
+             Console.WriteLine("No hay rclientes registrados");
             }
             Console.ReadLine();
         }//fin mostrar cliente
 
+
+        //Inicio crear cliente
         static string crear_cliente()
         {
-            //se inserta el rol en la base de datos
+         //se inserta el rol en la base de datos
             Console.WriteLine("Ingrese una descripción para el rol a crear");
             string descripcion = Console.ReadLine();
             rol rol = new rol(descripcion);
@@ -655,15 +658,15 @@ namespace Hotel_final
             return respuesta;
         }//fin crear cliente
 
-        //Sarkis: Mostrar clientes
-
+        
+        //Inicio realizar reservacion 
         static string realizar_reservacion()
         {
             int tipo_habitacion = pedir_tipo_habitacion();
 
             return "";
         }
-
+        //Fin realizar reservacion 
         static int pedir_tipo_habitacion()
         {
             bool fin = true;
@@ -688,7 +691,9 @@ namespace Hotel_final
             return 0;
         }
 
-        //incio proveedor camilita
+        //------------Proveedor------------
+
+        //Inicio crear proveedor 
         static string crear_proveedor()
         {
             bool fin = true;
@@ -724,6 +729,7 @@ namespace Hotel_final
            return respuesta;
         }//fin crear proveedor
 
+        //Incio eliminar proveedor
         static string eliminar_proveedor()
         {
             Console.WriteLine("Ingrese rut del proveedor a eliminar");
@@ -764,10 +770,10 @@ namespace Hotel_final
 
         static string crear_insumo()
         {
-            return "";
+          return "";
         }
         //pendiente
-    //Camilita inicio pack
+    //---------Inicio pack---------
     static string crear_pack()
     {
         bool fin = true;
@@ -788,7 +794,7 @@ namespace Hotel_final
                 }
         }
         return respuesta;
-    }
+    }//incio eliminar pack 
         static string Eliminar_pack()
         {
             Console.WriteLine("Ingrese la descripción del pack que desea eliminar");
@@ -798,6 +804,7 @@ namespace Hotel_final
             return resultado;
         }//fin eliminar pack
 
+        //inicio mostrar pack 
         static void Mostrar_pack()
         {
             pack pack = new pack("");
@@ -808,7 +815,7 @@ namespace Hotel_final
                 int i = 0;
                 foreach (DataRow ren in dtt.Rows)
                 {
-                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                 Console.WriteLine(ren[0] + "\t" + ren[1]);
                     i++;
                 }
             }
