@@ -57,17 +57,32 @@ namespace Hotel_final
 
         }
 
+        public int GetTotal()
+        {
+            return total;
+
+        }
+
         public void SetTotal(int total)
         {
             this.total = total;
 
         }
 
-        public int GetTotal()
+        public int GetNotaCredito()
         {
             return total;
 
         }
+
+        public void SetNotaCredito(int nota_credito)
+        {
+            this.nota_credito = nota_credito;
+
+        }
+
+        
+
 
 
 
