@@ -68,6 +68,8 @@ namespace Hotel_final
             Console.WriteLine();
             Console.WriteLine();
 
+            menu_hotel();
+
             static void menu_hotel()
             {
                 bool fin = false;
@@ -131,6 +133,7 @@ namespace Hotel_final
 
         }//fin main
 
+    // ------------- SE INICIA MENU ROLES ----------------------
         static void menu_roles()
         //camila: se muestran las opciones para administrar roles
         {
@@ -170,7 +173,12 @@ namespace Hotel_final
 
         }//fin menú roles
 
-        // --------------- INICIO MOSTRAR ROLES ---------------
+
+    //------------- FIN MENU ROLES ---------------------------
+
+        
+     
+     // --------------- INICIO MOSTRAR ROLES ---------------
         static void mostrar_roles()
         {
             //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
@@ -209,7 +217,9 @@ namespace Hotel_final
 
         // --------------- FIN CREAR ROL ---------------
 
-        //se elimina el rol en la base de datos
+  
+
+    // ------- INICIO ELIMINAR ROL ------------------------
         static string eliminar_rol()
         {
             Console.WriteLine("Ingrese una descripción para el rol a eliminar");
@@ -223,7 +233,7 @@ namespace Hotel_final
 
  
 
-        // Camila: se traen los tipo_habitacion de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
+        
 
           
     }//fin class program
