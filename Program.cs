@@ -11,8 +11,6 @@ using System.Reflection.PortableExecutable;
 using Microsoft.Identity.Client;
 
 namespace Hotel_final
-
-
 {
     class Program
     {
@@ -49,7 +47,7 @@ namespace Hotel_final
                 if ((usuario == user) && (contrasena == palabra_secreta))
                 {
                     Console.WriteLine("login correcto");
-                   // menu_cliente();
+                    menu_cliente();
                     break;
                 }
                 else
@@ -103,19 +101,19 @@ namespace Hotel_final
                         //case 3
                         //break;
                         case 4:
-                            //menu_reservaciones();
-                            //break;
+                            menu_reservaciones();
+                            break;
                         case 5:
-                            //menu_proveedores();
-                            //break;
+                            menu_proveedores();
+                            break;
                         case 6:
-                            //menu_insumos();
-                            //break;
+                            menu_insumos();
+                            break;
                         case 7:
-                            //menu_pack();
+                            menu_pack();
                             break;
                         //case 8:
-                            
+
                             //menu_staff();
                             //break;
                         case 0:
@@ -133,7 +131,6 @@ namespace Hotel_final
 
         }//fin main
 
-    // ------------- SE INICIA MENU ROLES ----------------------
         static void menu_roles()
         //camila: se muestran las opciones para administrar roles
         {
@@ -173,12 +170,7 @@ namespace Hotel_final
 
         }//fin menú roles
 
-
-    //------------- FIN MENU ROLES ---------------------------
-
-        
-     
-     // --------------- INICIO MOSTRAR ROLES ---------------
+        // --------------- INICIO MOSTRAR ROLES ---------------
         static void mostrar_roles()
         {
             //se traen los roles de la base de datos y se muestran en pantalla, si no hay roles muestra el mensaje "no hay roles registrados"
@@ -201,10 +193,6 @@ namespace Hotel_final
             Console.ReadLine();
         }//fin mostrar roles
 
-        // ----------------- FIN MOSTRAR ROLES ------------------
-
-        //-------- INICIO CREAR ROL ---------------------
-
         static string crear_rol()
         {
             //se inserta el rol en la base de datos
@@ -217,9 +205,7 @@ namespace Hotel_final
 
         // --------------- FIN CREAR ROL ---------------
 
-  
-
-    // ------- INICIO ELIMINAR ROL ------------------------
+        //se elimina el rol en la base de datos
         static string eliminar_rol()
         {
             Console.WriteLine("Ingrese una descripción para el rol a eliminar");
@@ -229,13 +215,79 @@ namespace Hotel_final
             return respuesta;
 
         }//fin eliminar rol
-         // -------------------- FIN ELIMINAR ROL ---------------------------
 
- 
+        // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
 
-        
+ // -------------------- INICIO MOSTRAR PAGO -------------------------
+        /*static void mostrar_tipo_pago()
+        {
+            tipo_pago tipo_pago = new tipo_pago("");
+            DataTable dtt = pago.Listar();
+            if (dtt.Rows.Count > 0)
+            {
+                Console.WriteLine("Descripción");
+                int i = 0;
+                foreach (DataRow ren in dtt.Rows)//la variable ren, ahora contendra el valor de cada una de las filas de dtt.
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay tipos de pago registrados");
+            }
+            Console.ReadLine();
+        }//fin mostrar pago
+         //Camila: aquí realize un método para pedir el tipo de pago que se va a realizar.
+        public int pedirtipo_pago()
+        {
+            bool fin = false;
+            while (!false)
+            {
 
-          
+                mostrar_tipo_pago();
+                string respuesta = Console.ReadLine();
+                switch (respuesta)
+                {
+                    case "1":
+                    case "2":
+                    case "3":
+                        fin = true;
+                        return Convert.ToInt32(respuesta);
+                        break;
+                    default:
+                        Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente");
+                        Console.ReadLine();
+                        break;
+                }
+
+            }
+        }//fin pedir tipo pago */
+
+// ------------------- FIN PEDIR TIPO PAGO --------------------------
+
+        static string eliminar_tipo_pago()
+        {
+            Console.WriteLine("Ingrese una descripción para el tipo de pago a eliminar");
+            string descripcion = Console.ReadLine();
+            pago tipo_pago = new pago(descripcion);
+            int filas_afectadas = tipo_pago.Eliminar();
+            if (filas_afectadas == 0)
+            {
+             return"No existe el tipo de pago ingresado, no se pudo eliminar";
+
+            }
+            else
+            {
+                return "Registro eliminado exitosamente";
+            }
+
+        }//fin tipos de pago
+
+        // Camila: se traen los tipo_habitacion de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
+
+
     }//fin class program
 
 }
