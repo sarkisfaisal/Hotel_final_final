@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +34,10 @@ namespace Hotel_final
             this.voucher = voucher;
 
         }// constructor
+        public pago()
+        {
+    
+        }// constructor vacio
 
         public void SetFecha(string fecha)
         { 
@@ -81,7 +87,64 @@ namespace Hotel_final
 
         }
 
-        
+        public DataTable Listar()
+        {
+            DataTable dtt;
+            conexionbd c = new conexionbd();
+            try
+            {
+                dtt = new DataTable();
+                string select = "Select * from pago";
+                SqlCommand cmd = new SqlCommand(select, c.conectarbd);
+                cmd.CommandType = CommandType.Text;
+                c.abrir();
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtt);
+                c.cerrar();
+                return dtt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtt;
+        }//fin linstar
+        public string insertar()// terminar 
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string insert = $"insert into pago values ('')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Tipo de pago creado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }//fin insertar
+        public int Eliminar()// terminar 
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from tipo_pago = ''";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                int filas = comando.ExecuteNonQuery();
+                c.cerrar();
+                return filas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }//fin eliminar
 
 
 
