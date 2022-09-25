@@ -36,29 +36,29 @@ namespace Hotel_final
 
             int contador = 1;
 
-            while (contador < 4)
-            {
-                Console.WriteLine("ingrese usuario ");
-                String user = Console.ReadLine();
+            //while (contador < 4)
+            //{
+            //    Console.WriteLine("ingrese usuario ");
+            //    String user = Console.ReadLine();
 
-                Console.WriteLine("ingrese password ");
-                string palabra_secreta = Console.ReadLine();
+            //    Console.WriteLine("ingrese password ");
+            //    string palabra_secreta = Console.ReadLine();
 
-                if ((usuario == user) && (contrasena == palabra_secreta))
-                {
-                    Console.WriteLine("login correcto");
-                    menu_cliente();
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("");
-                    Console.WriteLine("Login incorrecto");
-                    contador++;
-                    Console.WriteLine(contador);
-                }
+            //    if ((usuario == user) && (contrasena == palabra_secreta))
+            //    {
+            //        Console.WriteLine("login correcto");
+            //      //  menu_cliente();
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("");
+            //        Console.WriteLine("Login incorrecto");
+            //        contador++;
+            //        Console.WriteLine(contador);
+            //    }
 
-            }
+            //}
 
             Console.WriteLine("***********************");
             Console.WriteLine("BIENVENIDO A HOTEL");
@@ -87,6 +87,7 @@ namespace Hotel_final
                     Console.WriteLine("6 Menú insumos");
                     Console.WriteLine("7 Menú pack");
                     Console.WriteLine("8 Menú staff");
+                    Console.WriteLine("9 Menú origenes");
                     Console.WriteLine("Ingrese una opción");
                     int op = int.Parse(Console.ReadLine());
 
@@ -101,21 +102,24 @@ namespace Hotel_final
                         //case 3
                         //break;
                         case 4:
-                            menu_reservaciones();
+                     //       menu_reservaciones();
                             break;
                         case 5:
-                            menu_proveedores();
+                       //     menu_proveedores();
                             break;
                         case 6:
-                            menu_insumos();
+                         ///   menu_insumos();
                             break;
                         case 7:
-                            menu_pack();
+                          //  menu_pack();
                             break;
                         //case 8:
 
-                            //menu_staff();
-                            //break;
+                        //menu_staff();
+                        //break;
+                        case 9:
+                            menu_origenes();
+                            break;
                         case 0:
                             fin = true;
                             break;
@@ -219,10 +223,10 @@ namespace Hotel_final
         // Camila: se traen los tipo_pago de la base de datos y se muestran en pantalla, si no hay registros se retorna un mensaje "Tipo de pago no registrado".
 
  // -------------------- INICIO MOSTRAR PAGO -------------------------
-        /*static void mostrar_tipo_pago()
+        static void mostrar_tipo_pago()
         {
             tipo_pago tipo_pago = new tipo_pago("");
-            DataTable dtt = pago.Listar();
+            DataTable dtt = tipo_pago.Listar();
             if (dtt.Rows.Count > 0)
             {
                 Console.WriteLine("Descripción");
@@ -263,7 +267,7 @@ namespace Hotel_final
                 }
 
             }
-        }//fin pedir tipo pago */
+        }//fin pedir tipo pago 
 
 // ------------------- FIN PEDIR TIPO PAGO --------------------------
 
@@ -309,9 +313,88 @@ namespace Hotel_final
             }
         }
 
+        // -------------------- INICIO ORIGENES-------------------------
+        static void menu_origenes() {
+        bool fin = true;
+            while (fin)
+            {
+                Console.WriteLine("***********************");
+                Console.WriteLine("Menú administración de origenes");
+                Console.WriteLine("***********************");
+                Console.WriteLine("1 Crear un origen. ");
+                Console.WriteLine("2 Eliminar un origen. ");
+                Console.WriteLine("3 Ver origenes existentes.");
+                Console.WriteLine("4 Modificar origen.");
+                Console.WriteLine("0 Salir. ");
+                string opc = Console.ReadLine();
+                string respuesta;
+                switch (opc)
+                {
+                    case "1":
+                        respuesta = crear_origen();
+                        Console.WriteLine(respuesta);
+                        break;
+                    case "2":
+                        respuesta = eliminar_origen();
+                        Console.WriteLine(respuesta);
+                        break;
+                    case "3":
+                        mostrar_origenes();
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        break;
+                    case "0":
+                        fin = false;
+                        break;
+                    default:
+                        Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente...");
+                        Console.ReadLine();
+                        break;
+                }
+            }
+        }
 
+        static string crear_origen()
+        {
+            Console.WriteLine("Ingrese nombre del origen a agregar");
+            string origen = Console.ReadLine();
+            origen orig = new origen(origen);
+            return orig.insertar();
+        }
 
-    }//fin class program
+        static string eliminar_origen() {
+            Console.WriteLine("Ingrese el nombre del origen a eliminar");
+            string eliminado = Console.ReadLine();  
+            origen origen = new origen(eliminado);
+            return origen.Eliminar();
+        }
+
+        static void mostrar_origenes() {
+            DataTable datos = new origen().Listar();
+
+            if (datos.Rows.Count > 0)
+            {
+                Console.WriteLine("***********************");
+                Console.WriteLine("Listado de origenes");
+                Console.WriteLine("***********************");
+
+                Console.WriteLine("Id      Nombre");
+                Console.WriteLine("------------------");
+                int i = 0;
+                foreach (DataRow ren in datos.Rows)
+                {
+                    Console.WriteLine(ren[0] + "\t" + ren[1]);
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay  origenes registrados.");
+            }
+        }
+
+    }//fin class programa
 
 }
 // fin namespace hotel

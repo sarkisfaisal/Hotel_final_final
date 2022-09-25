@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.IdentityModel.Logging;
 
 namespace Hotel_final
 {
     internal class origen
     {
+
        private string nombre;
 
         public origen(string nombre)
@@ -63,12 +65,13 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into origen values ('{setorigen}')";
+                string origen = getorigen();
+                string insert = $"insert into origen values ('{origen}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
-                comando.ExecuteNonQuery();
+                var id = comando.ExecuteScalar();
                 c.cerrar();
-                return "origen creado con éxito";
+                return id.ToString();
             }
             catch (Exception ex)
             {
