@@ -83,7 +83,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where tipo = '{GetTipo}'";
+                string eliminar = $"delete from turno where tipo = '{GetTipo}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

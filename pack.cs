@@ -11,24 +11,25 @@ namespace Hotel_final
     internal class pack
     {
         private string descripcion;
-        private DateTime fecha;
+        private string fecha;
 
-        public pack(string descripcion) 
+        public pack(string descripcion, string fecha) 
         {
             this.descripcion = descripcion;
+            this.fecha = fecha;
         }
 
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateTime Getfecha()
+        public string Getfecha()
         {
             return fecha;
         }
-        public void setdescripcion(string descripcion) { 
+        public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        public void setfecha(DateTime fecha) {
+        public void Setfecha(string fecha) {
         this.fecha = fecha;
         }
 
@@ -61,7 +62,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into pack values ('{Getdescripcion}')";
+                string insert = $"insert into pack values ('{Getdescripcion}','{Getfecha}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
