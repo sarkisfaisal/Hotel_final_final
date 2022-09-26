@@ -121,7 +121,7 @@ namespace Hotel_final
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Tipo de pago creado con éxito";
+                return "Pago ingresado con éxito";
             }
             catch (Exception ex)
             {
