@@ -10,7 +10,7 @@ namespace Hotel_final
 {
     internal class rol
     {
-        private int idrol;
+       // private int idrol;
         private string descripcion;
 
         public rol(string descripcion)
@@ -18,7 +18,7 @@ namespace Hotel_final
             this.descripcion = descripcion;
         }
 
-        public void setdescripcion(string descripcion)
+        public void Setdescripcion(string descripcion)
         {
             this.descripcion = descripcion;
         }
@@ -62,7 +62,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{setdescripcion}')";
+                string insert = $"insert into rol values ('{Setdescripcion}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

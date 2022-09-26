@@ -27,16 +27,16 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateOnly Getfecha()
+       /* public DateOnly Getfecha()
         {
             return fecha;
-        }
+        } */
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        public void Setfecha(DateOnly fecha) {
+        /*public void Setfecha(DateOnly fecha) {
         this.fecha = fecha;
-        }
+        }*/
 
         public DataTable Listar()
         {
@@ -67,7 +67,8 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into pack values ('{Getdescripcion}','{Getfecha}')";
+                DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
+                string insert = $"insert into pack values ('{Getdescripcion}','{fecha}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -85,7 +86,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}' and fecha = '{Getfecha} ";
+                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}' ";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

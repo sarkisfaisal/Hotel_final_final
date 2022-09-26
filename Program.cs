@@ -540,6 +540,7 @@ namespace Hotel_final
                 DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(tipo,fecha);
                 return P.insertar();
+                menu_pack();
             }//fin crear turno
 
             static string eliminar_pack()
@@ -565,12 +566,12 @@ namespace Hotel_final
                     Console.WriteLine("Listado de packs");
                     Console.WriteLine("***********************");
 
-                    Console.WriteLine("Id      Nombre   Fecha");
+                    Console.WriteLine("Id      Nombre ");
                     Console.WriteLine("------------------");
                     int i = 0;
                     foreach (DataRow ren in datos.Rows)
                     {
-                        Console.WriteLine(ren[0] + "\t" + ren[1] + "\t" + ren[2]);
+                        Console.WriteLine(ren[0] + "\t" + ren[1]);
                         i++;
                     }
                 }
