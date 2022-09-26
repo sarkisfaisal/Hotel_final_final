@@ -14,28 +14,19 @@ namespace Hotel_final
 {
     class Program
     {
-
+      //----------------INICIO PROGRAMA-------------------
         static void Main(string[] args)
-
-        //Login//
-
-
         {
-
-
-
             Console.WriteLine("***************************");
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
-
-
-
 
             string usuario = "admin";
             string contrasena = "123";
 
             int contador = 1;
 
+            //---------------INICIO LOGIN-------------------------
             while (contador < 4)
             {
                 Console.WriteLine("ingrese usuario ");
@@ -58,7 +49,7 @@ namespace Hotel_final
                     Console.WriteLine(contador);
                 }
 
-                //}
+               //----------------INICIO MENU HOTEL----------------------
 
                 Console.WriteLine("***********************");
                 Console.WriteLine("BIENVENIDO A HOTEL");
@@ -135,13 +126,13 @@ namespace Hotel_final
                         }
                     }
 
-                }//fin menu hotel
+                }//-------------FIN MENU HOTEL-------------------------
 
 
             }//fin main
 
+            //------------------INICIO MENU ROLES-----------------------
             static void menu_roles()
-            //camila: se muestran las opciones para administrar roles
             {
                 bool fin = false;
                 while (!fin)
@@ -184,7 +175,7 @@ namespace Hotel_final
                     Console.ReadLine();
                 }
 
-            }//fin menú roles
+            }//---------------FIN MENU ROLES----------------------
 
             // --------------- INICIO MOSTRAR ROLES ---------------
             static void mostrar_roles()
@@ -207,13 +198,11 @@ namespace Hotel_final
                     Console.WriteLine("No hay roles registrados");
                 }
                 Console.ReadLine();
-            }//fin mostrar roles
-
+            }
             // -------------------- FIN MOSTRAR ROLES ---------------------------
 
 
             //-------------------------- INICIO CREAR ROL -----------------------
-
             static string crear_rol()
             {
                 //se inserta el rol en la base de datos
@@ -548,8 +537,7 @@ namespace Hotel_final
             {
                 Console.WriteLine("Ingrese nombre del pack a agregar");
                 string tipo = Console.ReadLine();
-                Console.WriteLine("ingrese fecha en formato aaaa-mm-dd 0:00:00");
-                DateTime fecha = DateTime.Parse(Console.ReadLine());
+                DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(tipo,fecha);
                 return P.insertar();
             }//fin crear turno
@@ -560,7 +548,7 @@ namespace Hotel_final
                 Console.WriteLine("Ingrese el nombre del pack a eliminar");
                 string eliminado = Console.ReadLine();
                 Console.WriteLine("ingrese fecha formato aaaa-mm-dd 0:00:00");
-                DateTime fecha = DateTime.Parse(Console.ReadLine());
+                DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(eliminado,fecha);
                 return P.Eliminar();
                 

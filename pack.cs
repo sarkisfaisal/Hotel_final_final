@@ -11,9 +11,9 @@ namespace Hotel_final
     internal class pack
     {
         private string descripcion;
-        private DateTime fecha;
+        private DateOnly fecha;
 
-        public pack(string descripcion, DateTime fecha)
+        public pack(string descripcion, DateOnly fecha)
         {
             this.descripcion = descripcion;
             this.fecha = fecha;
@@ -27,14 +27,14 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateTime Getfecha()
+        public DateOnly Getfecha()
         {
             return fecha;
         }
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        public void Setfecha(DateTime fecha) {
+        public void Setfecha(DateOnly fecha) {
         this.fecha = fecha;
         }
 
