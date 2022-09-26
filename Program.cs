@@ -47,7 +47,7 @@ namespace Hotel_final
                 if ((usuario == user) && (contrasena == palabra_secreta))
                 {
                     Console.WriteLine("login correcto");
-
+                    menu_hotel();
                     break;
                 }
                 else
@@ -87,7 +87,8 @@ namespace Hotel_final
                         Console.WriteLine("6 Menú insumos");
                         Console.WriteLine("7 Menú pack");
                         Console.WriteLine("8 Menú staff");
-                        Console.WriteLine("8 Menú turno");
+                        Console.WriteLine("9 Menú turno");
+                        Console.WriteLine("10 salir");
                         Console.WriteLine("Ingrese una opción");
                         int op = int.Parse(Console.ReadLine());
 
@@ -117,14 +118,14 @@ namespace Hotel_final
 
                             //menu_staff();
                             //break;
-                            case 0:
+                            case 10:
                                 fin = true;
                                 break;
                             default:
                                 break;
                         }
 
-                        if (op == 9)
+                        if (op == 10)
                         {
                             fin = true;
                             Console.WriteLine("hasta luego");
@@ -421,7 +422,7 @@ namespace Hotel_final
                 while (fin)
                 {
                     Console.WriteLine("*******************************");
-                    Console.WriteLine("Menú administración de origenes");
+                    Console.WriteLine("Menú administración de turnos");
                     Console.WriteLine("*******************************");
                     Console.WriteLine("1 Crear un turno. ");
                     Console.WriteLine("2 Eliminar un turno. ");
@@ -495,7 +496,94 @@ namespace Hotel_final
                 }
                 else
                 {
-                    Console.WriteLine("No hay  origenes registrados.");
+                    Console.WriteLine("No hay  turnos registrados.");
+                }
+            }//fin mostrar turno
+
+            static void menu_pack()
+            {
+                bool fin = true;
+                while (fin)
+                {
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("Menú administración de packs");
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("1 Crear un turno. ");
+                    Console.WriteLine("2 Eliminar un turno. ");
+                    Console.WriteLine("3 Ver turnos existentes.");
+                    Console.WriteLine("4 Modificar turno.");
+                    Console.WriteLine("0 Salir. ");
+                    string opc = Console.ReadLine();
+                    string respuesta;
+                    switch (opc)
+                    {
+                        case "1":
+                            respuesta = crear_pack();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "2":
+                            respuesta = eliminar_pack();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "3":
+                            mostrar_pack();
+                            Console.ReadLine();
+                            break;
+                        case "4":
+                            break;
+                        case "0":
+                            fin = false;
+                            break;
+                        default:
+                            Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente...");
+                            Console.ReadLine();
+                            break;
+                    }
+                }
+            }// fin menu turno
+
+            static string crear_pack()
+            {
+                Console.WriteLine("Ingrese nombre del pack a agregar");
+                string tipo = Console.ReadLine();
+                Console.WriteLine("ingrese fecha en formato aaaa-mm-dd");
+                string fecha = Console.ReadLine();
+                pack P = new pack(tipo,fecha);
+                return P.insertar();
+            }//fin crear turno
+
+            static string eliminar_pack()
+            {
+                Console.WriteLine("Ingrese el nombre del pack a eliminar");
+                string eliminado = Console.ReadLine();
+
+                turno T = new turno(eliminado);
+                return T.Eliminar();
+            }//fin eliminar turno
+
+            static void mostrar_pack()
+            {
+                
+                DataTable datos = new pack("","").Listar();
+
+                if (datos.Rows.Count > 0)
+                {
+                    Console.WriteLine("***********************");
+                    Console.WriteLine("Listado de packs");
+                    Console.WriteLine("***********************");
+
+                    Console.WriteLine("Id      Nombre");
+                    Console.WriteLine("------------------");
+                    int i = 0;
+                    foreach (DataRow ren in datos.Rows)
+                    {
+                        Console.WriteLine(ren[0] + "\t" + ren[1]);
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay  turnos registrados.");
                 }
             }//fin mostrar turno
 
