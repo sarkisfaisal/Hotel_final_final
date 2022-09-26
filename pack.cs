@@ -11,25 +11,30 @@ namespace Hotel_final
     internal class pack
     {
         private string descripcion;
-        private string fecha;
+        private DateTime fecha;
 
-        public pack(string descripcion, string fecha) 
+        public pack(string descripcion, DateTime fecha)
         {
             this.descripcion = descripcion;
             this.fecha = fecha;
         }
 
+        public pack()
+        {
+
+        }
+
         public string Getdescripcion() { 
             return descripcion;
         }
-        public string Getfecha()
+        public DateTime Getfecha()
         {
             return fecha;
         }
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        public void Setfecha(string fecha) {
+        public void Setfecha(DateTime fecha) {
         this.fecha = fecha;
         }
 
@@ -67,7 +72,7 @@ namespace Hotel_final
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol creado con éxito";
+                return "Pack creado con éxito";
             }
             catch (Exception ex)
             {
@@ -80,7 +85,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}' and fecha = '{Getfecha}' ";
+                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}' and fecha = '{Getfecha} ";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

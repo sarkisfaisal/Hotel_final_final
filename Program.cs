@@ -88,7 +88,8 @@ namespace Hotel_final
                         Console.WriteLine("7 Menú pack");
                         Console.WriteLine("8 Menú staff");
                         Console.WriteLine("9 Menú turno");
-                        Console.WriteLine("10 salir");
+                        Console.WriteLine("10 Menú tipo habitacion");
+                        Console.WriteLine("11 salir");
                         Console.WriteLine("Ingrese una opción");
                         int op = int.Parse(Console.ReadLine());
 
@@ -112,20 +113,21 @@ namespace Hotel_final
                                 //menu_insumos();
                                 break;
                             case 7:
-                                menu_turno();
+                                menu_pack();
                                 break;
-                            //case 8:
-
-                            //menu_staff();
-                            //break;
                             case 10:
+
+                            menu_tipo_habitacion();
+                           break;
+
+                            case 11:
                                 fin = true;
                                 break;
                             default:
                                 break;
                         }
 
-                        if (op == 10)
+                        if (op == 11)
                         {
                             fin = true;
                             Console.WriteLine("hasta luego");
@@ -338,9 +340,9 @@ namespace Hotel_final
                 bool fin = true;
                 while (fin)
                 {
-                    Console.WriteLine("***********************");
+                    Console.WriteLine("*******************************");
                     Console.WriteLine("Menú administración de origenes");
-                    Console.WriteLine("***********************");
+                    Console.WriteLine("*******************************");
                     Console.WriteLine("1 Crear un origen. ");
                     Console.WriteLine("2 Eliminar un origen. ");
                     Console.WriteLine("3 Ver origenes existentes.");
@@ -468,7 +470,7 @@ namespace Hotel_final
 
             static string eliminar_turno()
             {
-                Console.WriteLine("Ingrese el nombre del origen a eliminar");
+                Console.WriteLine("Ingrese el nombre del turno a eliminar");
                 string eliminado = Console.ReadLine();
 
                 turno T = new turno(eliminado);
@@ -508,10 +510,10 @@ namespace Hotel_final
                     Console.WriteLine("*******************************");
                     Console.WriteLine("Menú administración de packs");
                     Console.WriteLine("*******************************");
-                    Console.WriteLine("1 Crear un turno. ");
-                    Console.WriteLine("2 Eliminar un turno. ");
-                    Console.WriteLine("3 Ver turnos existentes.");
-                    Console.WriteLine("4 Modificar turno.");
+                    Console.WriteLine("1 Crear un pack. ");
+                    Console.WriteLine("2 Eliminar un pack. ");
+                    Console.WriteLine("3 Ver packs existentes.");
+                    Console.WriteLine("4 Modificar pack.");
                     Console.WriteLine("0 Salir. ");
                     string opc = Console.ReadLine();
                     string respuesta;
@@ -546,31 +548,119 @@ namespace Hotel_final
             {
                 Console.WriteLine("Ingrese nombre del pack a agregar");
                 string tipo = Console.ReadLine();
-                Console.WriteLine("ingrese fecha en formato aaaa-mm-dd");
-                string fecha = Console.ReadLine();
+                Console.WriteLine("ingrese fecha en formato aaaa-mm-dd 0:00:00");
+                DateTime fecha = DateTime.Parse(Console.ReadLine());
                 pack P = new pack(tipo,fecha);
                 return P.insertar();
             }//fin crear turno
 
             static string eliminar_pack()
             {
+                mostrar_pack();
                 Console.WriteLine("Ingrese el nombre del pack a eliminar");
                 string eliminado = Console.ReadLine();
-
-                turno T = new turno(eliminado);
-                return T.Eliminar();
+                Console.WriteLine("ingrese fecha formato aaaa-mm-dd 0:00:00");
+                DateTime fecha = DateTime.Parse(Console.ReadLine());
+                pack P = new pack(eliminado,fecha);
+                return P.Eliminar();
+                
             }//fin eliminar turno
 
             static void mostrar_pack()
             {
                 
-                DataTable datos = new pack("","").Listar();
+                DataTable datos = new pack().Listar();
 
                 if (datos.Rows.Count > 0)
                 {
                     Console.WriteLine("***********************");
                     Console.WriteLine("Listado de packs");
                     Console.WriteLine("***********************");
+
+                    Console.WriteLine("Id      Nombre   Fecha");
+                    Console.WriteLine("------------------");
+                    int i = 0;
+                    foreach (DataRow ren in datos.Rows)
+                    {
+                        Console.WriteLine(ren[0] + "\t" + ren[1] + "\t" + ren[2]);
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay packs registrados.");
+                }
+            }//fin mostrar pack
+
+           
+            static void menu_tipo_habitacion()
+            {
+                bool fin = true;
+                while (fin)
+                {
+                    Console.WriteLine("*****************************************");
+                    Console.WriteLine("Menú administración de tipo de habitacion");
+                    Console.WriteLine("*****************************************");
+                    Console.WriteLine("1 Crear un tipo de habitacion. ");
+                    Console.WriteLine("2 Eliminar un tipo de habitacion. ");
+                    Console.WriteLine("3 Ver tipos de habitaciones existentes.");
+                    Console.WriteLine("4 Modificar tipos de habitaciones.");
+                    Console.WriteLine("0 Salir. ");
+                    string opc = Console.ReadLine();
+                    string respuesta;
+                    switch (opc)
+                    {
+                        case "1":
+                            respuesta = crear_turno();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "2":
+                            respuesta = eliminar_turno();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "3":
+                            mostrar_turno();
+                            Console.ReadLine();
+                            break;
+                        case "4":
+                            break;
+                        case "0":
+                            fin = false;
+                            break;
+                        default:
+                            Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente...");
+                            Console.ReadLine();
+                            break;
+                    }
+                }
+            }// fin menu turno
+
+            static string crear_tipo_habitacion()
+            {
+                Console.WriteLine("Ingrese nombre del tipo de habitacion a agregar");
+                string tipo = Console.ReadLine();
+                tipo_habitacion T = new tipo_habitacion(tipo);
+                return T.insertar();
+            }//fin crear turno
+
+            static string eliminar_tipo_habitacion()
+            {
+                Console.WriteLine("Ingrese el nombre del turno a eliminar");
+                string eliminado = Console.ReadLine();
+
+                tipo_habitacion T = new tipo_habitacion(eliminado);
+                return T.Eliminar();
+            }//fin eliminar turno
+
+            static void mostrar_tipo_habitacion()
+            {
+                DataTable datos = new turno().Listar();
+
+                if (datos.Rows.Count > 0)
+                {
+                    Console.WriteLine("******************************");
+                    Console.WriteLine("Listado de tipos de habitacion");
+                    Console.WriteLine("******************************");
 
                     Console.WriteLine("Id      Nombre");
                     Console.WriteLine("------------------");

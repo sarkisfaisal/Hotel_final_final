@@ -73,7 +73,7 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }
+        }//fin insertar
 
         public string Eliminar()
         {
@@ -91,7 +91,7 @@ namespace Hotel_final
             {
                 return ex.Message;
             }
-        }
+        }//fin eliminar
     }
 
 }

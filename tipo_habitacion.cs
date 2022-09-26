@@ -29,6 +29,11 @@ namespace Hotel_final
         
         }
 
+        public tipo_habitacion()
+        { 
+        
+        }
+
         public DataTable Listar()
         {
             DataTable dtt;
@@ -36,7 +41,7 @@ namespace Hotel_final
             try
             {
                 dtt = new DataTable();
-                string select = "Select * from tipo_Habitacion";
+                string select = "Select * from tipo_habitacion";
                 SqlCommand cmd = new SqlCommand(select, c.conectarbd);
                 cmd.CommandType = CommandType.Text;
                 c.abrir();
@@ -52,6 +57,43 @@ namespace Hotel_final
                 throw ex;
             }
             return dtt;
-        }
+        }// fin listar
+
+        public string insertar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string insert = $"insert into rol values ('{SetTipoHabitacion}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol creado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }//fin insertar
+
+        public string Eliminar()
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string eliminar = $"delete from tipo_habitacion where tipo = '{GetTipoHabitacion}'";
+                SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
+                c.abrir();
+                comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol eliminado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }// fin eliminar
+
     }//fin class tipo_habitacion
 }//fin namespace Hotel_final
