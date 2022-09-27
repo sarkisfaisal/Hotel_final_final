@@ -65,7 +65,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into turno values ('{SetTipo}')";
+                string insert = $"insert into turno values ('{GetTipo()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -83,7 +83,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from turno where tipo = '{GetTipo}'";
+                string eliminar = $"delete from turno where tipo = '{GetTipo()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

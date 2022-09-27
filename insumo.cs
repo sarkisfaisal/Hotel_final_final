@@ -94,7 +94,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into insumo values ({setIdPack},{setIdproveedor},'{setnombre}',{setcantidad},'{setvencido}')";
+                string insert = $"insert into insumo values ({GetIdpack()},{GetIdproveedor()},'{GetNombre()}',{GetCantidad()},'{GetVencido()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -111,7 +111,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from insumo where = '{GetNombre}'";
+                string eliminar = $"delete from insumo where = '{GetNombre()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 int filas = comando.ExecuteNonQuery();

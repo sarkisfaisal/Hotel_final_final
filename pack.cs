@@ -64,10 +64,10 @@ namespace Hotel_final
 
         public string insertar()
         {
-            conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into pack values ('{Getdescripcion}','{Getfecha}')";
+                conexionbd c = new conexionbd();
+                string insert = $"insert into pack values ('{Getdescripcion()}','{Getfecha()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -85,7 +85,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from pack where descripcion = '{Getdescripcion}' and fecha = '{Getfecha} ";
+                string eliminar = $"delete from pack where descripcion = '{Getdescripcion()}' and fecha = '{Getfecha()} ";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

@@ -62,10 +62,10 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{setdescripcion}')";
+                string insert = $"insert into rol values ('{Getdescripcion()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
-                comando.ExecuteNonQuery();
+                int com = comando.ExecuteNonQuery();
                 c.cerrar();
                 return "Rol creado con éxito";
             }
@@ -80,7 +80,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from rol where descripcion = '{Getdescripcion}'";
+                string eliminar = $"delete from rol where descripcion = '{Getdescripcion()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

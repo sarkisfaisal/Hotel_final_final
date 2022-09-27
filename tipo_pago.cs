@@ -55,7 +55,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into tipo_pago values ('{setdescripcion}')";
+                string insert = $"insert into tipo_pago values ('{Getdescripcion()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from tipo_pago = '{Getdescripcion}'";
+                string eliminar = $"delete from tipo_pago = '{Getdescripcion()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 int filas = comando.ExecuteNonQuery();

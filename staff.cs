@@ -77,7 +77,7 @@ public staff()
                 Console.WriteLine("2 vespertino");
                 Console.WriteLine("3 nocturno");
                 string idturno = Console.ReadLine();
-                string insert = $"insert into staff values ('{idturno}','{SetDescripcion}')";
+                string insert = $"insert into staff values ('{idturno}','{GetDescripcion()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -95,7 +95,7 @@ public staff()
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from staff where descripcion = '{GetDescripcion}'";
+                string eliminar = $"delete from staff where descripcion = '{GetDescripcion()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

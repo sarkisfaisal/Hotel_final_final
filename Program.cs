@@ -21,33 +21,33 @@ namespace Hotel_final
             Console.WriteLine("Bienvenido al area de login");
             Console.WriteLine("***************************");
 
-            string usuario = "admin";
-            string contrasena = "123";
+            //string usuario = "admin";
+            //string contrasena = "123";
 
             int contador = 1;
 
             //---------------INICIO LOGIN-------------------------
             while (contador < 4)
             {
-                Console.WriteLine("ingrese usuario ");
-                String user = Console.ReadLine();
+                //Console.WriteLine("ingrese usuario ");
+                //String user = Console.ReadLine();
 
-                Console.WriteLine("ingrese password ");
-                string palabra_secreta = Console.ReadLine();
+                //Console.WriteLine("ingrese password ");
+                //string palabra_secreta = Console.ReadLine();
 
-                if ((usuario == user) && (contrasena == palabra_secreta))
-                {
-                    Console.WriteLine("login correcto");
-                    menu_hotel();
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("");
-                    Console.WriteLine("Login incorrecto");
-                    contador++;
-                    Console.WriteLine(contador);
-                }
+                //if ((usuario == user) && (contrasena == palabra_secreta))
+                //{
+                //    Console.WriteLine("login correcto");
+                //    menu_hotel();
+                //    break;
+                //}
+                //else
+                //{
+                //    Console.WriteLine("");
+                //    Console.WriteLine("Login incorrecto");
+                //    contador++;
+                //    Console.WriteLine(contador);
+                //}
 
                //----------------INICIO MENU HOTEL----------------------
 
@@ -107,8 +107,7 @@ namespace Hotel_final
                                 menu_pack();
                                 break;
                             case 10:
-
-                            menu_tipo_habitacion();
+                                menu_tipo_habitacion();
                            break;
 
                             case 11:
@@ -536,7 +535,7 @@ namespace Hotel_final
             static string crear_pack()
             {
                 Console.WriteLine("Ingrese nombre del pack a agregar");
-                string tipo = Console.ReadLine();
+                string tipo = Console.ReadLine(); 
                 DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(tipo,fecha);
                 return P.insertar();
@@ -547,7 +546,6 @@ namespace Hotel_final
                 mostrar_pack();
                 Console.WriteLine("Ingrese el nombre del pack a eliminar");
                 string eliminado = Console.ReadLine();
-                Console.WriteLine("ingrese fecha formato aaaa-mm-dd 0:00:00");
                 DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(eliminado,fecha);
                 return P.Eliminar();

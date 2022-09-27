@@ -66,7 +66,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into proveedor values ('{setrut}','{setrazonsocial}')";
+                string insert = $"insert into proveedor values ('{get_rut()}','{get_razon_social()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -84,7 +84,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from proveedor where rut= '{get_rut}'";
+                string eliminar = $"delete from proveedor where rut= '{get_rut()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 int filas = comando.ExecuteNonQuery();

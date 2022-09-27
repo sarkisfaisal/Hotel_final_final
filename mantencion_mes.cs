@@ -81,7 +81,7 @@ public mantencion_mes()
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{GetFecha}','{GetObs}')";
+                string insert = $"insert into rol values ('{GetFecha()}','{GetObs()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -99,7 +99,7 @@ public mantencion_mes()
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from mantencion_mes where fecha = '{GetFecha}'";
+                string eliminar = $"delete from mantencion_mes where fecha = '{GetFecha()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
