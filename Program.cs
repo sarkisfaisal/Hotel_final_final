@@ -77,8 +77,9 @@ namespace Hotel_final
                         Console.WriteLine("5 Menú proveedores");
                         Console.WriteLine("6 Menú insumos");
                         Console.WriteLine("7 Menú pack");
-                        Console.WriteLine("8 Menú staff");
-                        Console.WriteLine("9 Menú turno");
+                        //Console.WriteLine("8 Menú staff");
+                        Console.WriteLine("8 Menú turno");
+                        Console.WriteLine("9 Menú pendiente");
                         Console.WriteLine("10 Menú tipo habitacion");
                         Console.WriteLine("11 salir");
                         Console.WriteLine("Ingrese una opción");
@@ -93,19 +94,30 @@ namespace Hotel_final
                                 menu_roles();
                                 break;
                             //case 3
+                                //menu_pago();
                             //break;
-                            case 4:
+                            //case 4:
                                 //menu_reservaciones();
-                                break;
-                            case 5:
+                                //break;
+                            //case 5:
                                 //menu_proveedores();
-                                break;
-                            case 6:
+                               // break;
+                           // case 6:
                                 //menu_insumos();
-                                break;
+                             //   break;
                             case 7:
                                 menu_pack();
                                 break;
+
+                            case 8:
+
+                                menu_turno();
+                                break;
+
+                            case 9:
+
+                                break;  
+                               
                             case 10:
                                 menu_tipo_habitacion();
                            break;
@@ -539,6 +551,7 @@ namespace Hotel_final
                 DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
                 pack P = new pack(tipo,fecha);
                 return P.insertar();
+                menu_pack();
             }//fin crear turno
 
             static string eliminar_pack()
@@ -563,12 +576,12 @@ namespace Hotel_final
                     Console.WriteLine("Listado de packs");
                     Console.WriteLine("***********************");
 
-                    Console.WriteLine("Id      Nombre   Fecha");
+                    Console.WriteLine("Id      Nombre ");
                     Console.WriteLine("------------------");
                     int i = 0;
                     foreach (DataRow ren in datos.Rows)
                     {
-                        Console.WriteLine(ren[0] + "\t" + ren[1] + "\t" + ren[2]);
+                        Console.WriteLine(ren[0] + "\t" + ren[1]);
                         i++;
                     }
                 }

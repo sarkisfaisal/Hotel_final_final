@@ -27,16 +27,16 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateOnly Getfecha()
+       /* public DateOnly Getfecha()
         {
             return fecha;
-        }
+        } */
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        public void Setfecha(DateOnly fecha) {
+        /*public void Setfecha(DateOnly fecha) {
         this.fecha = fecha;
-        }
+        }*/
 
         public DataTable Listar()
         {
