@@ -64,12 +64,12 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{GetTipoHabitacion()}')";
+                string insert = $"insert into tipo_habitacion values ('{GetTipoHabitacion()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol creado con éxito";
+                return "Tipo creado con éxito";
             }
             catch (Exception ex)
             {
@@ -82,12 +82,12 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from tipo_habitacion where tipo = '{GetTipoHabitacion}'";
+                string eliminar = $"delete from tipo_habitacion where tipo = '{GetTipoHabitacion()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol eliminado con éxito";
+                return "Tipo eliminado con éxito";
             }
             catch (Exception ex)
             {

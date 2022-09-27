@@ -27,10 +27,10 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-       /* public DateOnly Getfecha()
+        public DateOnly Getfecha()
         {
             return fecha;
-        } */
+        } 
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
@@ -85,7 +85,7 @@ namespace Hotel_final
             conexionbd c = new conexionbd();
             try
             {
-                string eliminar = $"delete from pack where descripcion = '{Getdescripcion()}' and fecha = '{Getfecha()} ";
+                string eliminar = $"delete from pack where descripcion = '{Getdescripcion()}'";
                 SqlCommand comando = new SqlCommand(eliminar, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

@@ -117,7 +117,6 @@ namespace Hotel_final
                             case 9:
 
                                 break;  
-                               
                             case 10:
                                 menu_tipo_habitacion();
                            break;
@@ -156,15 +155,16 @@ namespace Hotel_final
                     Console.WriteLine("3 Ver roles existentes. ");
                     Console.WriteLine("0 Salir. ");
                     int opc = int.Parse(Console.ReadLine());
-
+                    string respuesta;
                     switch (opc)
                     {
                         case 1:
-                            string crear = crear_rol();
-                            Console.WriteLine(crear);
+                            respuesta = crear_rol();
+                            Console.WriteLine(respuesta);
                             break;
                         case 2:
-                            eliminar_rol();
+                            respuesta = eliminar_rol();
+                            Console.WriteLine(respuesta);
                             break;
                         case 3:
                             mostrar_roles();
@@ -541,6 +541,8 @@ namespace Hotel_final
                             Console.ReadLine();
                             break;
                     }
+                    Console.WriteLine("Enter para continuar");
+                    Console.ReadLine();
                 }
             }// fin menu turno
 
@@ -576,12 +578,12 @@ namespace Hotel_final
                     Console.WriteLine("Listado de packs");
                     Console.WriteLine("***********************");
 
-                    Console.WriteLine("Id      Nombre ");
-                    Console.WriteLine("------------------");
+                    Console.WriteLine("Id      Nombre      Fecha");
+                    Console.WriteLine("---------------------------------");
                     int i = 0;
                     foreach (DataRow ren in datos.Rows)
                     {
-                        Console.WriteLine(ren[0] + "\t" + ren[1]);
+                        Console.WriteLine(ren[0] + "\t" + ren[1] + "      " + ren[2]);
                         i++;
                     }
                 }
@@ -610,15 +612,15 @@ namespace Hotel_final
                     switch (opc)
                     {
                         case "1":
-                            respuesta = crear_turno();
+                            respuesta = crear_tipo_habitacion();
                             Console.WriteLine(respuesta);
                             break;
                         case "2":
-                            respuesta = eliminar_turno();
+                            respuesta = eliminar_tipo_habitacion();
                             Console.WriteLine(respuesta);
                             break;
                         case "3":
-                            mostrar_turno();
+                            mostrar_tipo_habitacion();
                             Console.ReadLine();
                             break;
                         case "4":
@@ -636,7 +638,7 @@ namespace Hotel_final
 
             static string crear_tipo_habitacion()
             {
-                Console.WriteLine("Ingrese nombre del tipo de habitacion a agregar");
+                Console.WriteLine("Ingrese nombre de tipo de habitacion a agregar");
                 string tipo = Console.ReadLine();
                 tipo_habitacion T = new tipo_habitacion(tipo);
                 return T.insertar();
@@ -644,7 +646,7 @@ namespace Hotel_final
 
             static string eliminar_tipo_habitacion()
             {
-                Console.WriteLine("Ingrese el nombre del turno a eliminar");
+                Console.WriteLine("Ingrese nombre de tipo de habitacion a eliminar");
                 string eliminado = Console.ReadLine();
 
                 tipo_habitacion T = new tipo_habitacion(eliminado);
@@ -653,7 +655,7 @@ namespace Hotel_final
 
             static void mostrar_tipo_habitacion()
             {
-                DataTable datos = new turno().Listar();
+                DataTable datos = new tipo_habitacion().Listar();
 
                 if (datos.Rows.Count > 0)
                 {
@@ -680,3 +682,5 @@ namespace Hotel_final
 
     }// fin class program
 }// fin namespace hotel
+
+
