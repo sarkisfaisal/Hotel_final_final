@@ -124,17 +124,10 @@ namespace Hotel_final
         //-----------------INICIO ELIMINAR INSUMO--------------------
         public string eliminar_insumo()
         {
-            Console.WriteLine("Ingrese el idpack correspondiente para eliminar");
-            int idpack = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ingrese el id proveedor correspondiente para eliminar");
-            int id_proveedor = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Ingrese el nombre del insumo que desea eliminar");
             string nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese la cantidad de insumos a eliminar");
+            Console.WriteLine("Ingrese la cantidad de insumos a crear");
             int cantidad = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ingrese si el insumo se encuentra vencido para poder eliminarlo");
-            string vencido = Console.ReadLine();
-
             insumo i = new insumo();
             int filas = i.Eliminar();
             if (filas == 0)
