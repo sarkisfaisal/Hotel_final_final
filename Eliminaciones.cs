@@ -119,7 +119,34 @@ namespace Hotel_final
                 return "Proveedor eliminado exitosamente";
             }
         }
-        //----------------FIN ELIMINAR PROVEEDOR--------------------
+        //----------------FIN ELIMINAR PROVEEDOR---------------------
+
+        //-----------------INICIO ELIMINAR INSUMO--------------------
+        public string eliminar_insumo()
+        {
+            Console.WriteLine("Ingrese el idpack correspondiente para eliminar");
+            int idpack = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el id proveedor correspondiente para eliminar");
+            int id_proveedor = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el nombre del insumo que desea eliminar");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese la cantidad de insumos a eliminar");
+            int cantidad = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese si el insumo se encuentra vencido para poder eliminarlo");
+            string vencido = Console.ReadLine();
+
+            insumo i = new insumo();
+            int filas = i.Eliminar();
+            if (filas == 0)
+            {
+                return "No se puede eliminar, los datos ingresados no existen";
+            }
+            else
+            {
+                return "Insumo eliminado exitosamente";
+            }
+        }
+        //-----------------FIN ELIMINAR INSUMO-----------------------
 
 
 

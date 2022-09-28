@@ -9,8 +9,9 @@ namespace Hotel_final
 {
     internal class Muestras
     {
+        private int idpack;
 
-        // --------------- INICIO MOSTRAR ROLES ---------------      
+        // ----------------------INICIO MOSTRAR ROLES--------------------------- 
         public void mostrar_roles() 
         {
            
@@ -33,8 +34,8 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }
-        // -------------------- FIN MOSTRAR ROLES ---------------------------
-
+        // -------------------- FIN MOSTRAR ROLES --------------------------------
+        
         // -------------------- INICIO MOSTRAR TIPO PAGO -------------------------
         public void mostrar_tipo_pago()
         {
@@ -56,9 +57,9 @@ namespace Hotel_final
             }
             Console.ReadLine();
         }
-        //---------------------- FIN MOSTRAR TIPO PAGO ------------------
+        //---------------------- FIN MOSTRAR TIPO PAGO ---------------------------
 
-        //----------------------INICIO MOSTRAR HABITACIONES------------------------
+        //----------------------INICIO MOSTRAR HABITACIONES-----------------------
         // Camila: se traen los tipo_habitacion de la base de datos y se muestran en pantalla,
         // si no hay registros se retorna un mensaje "Tipo de pago no registrado".
         public void mostrar_habitaciones_disponibles()
@@ -81,9 +82,9 @@ namespace Hotel_final
            Console.WriteLine("No hay  habitaciones disponibles.");
           }
         }
-        //-------------------FIN MOSTRAR HABITACIONES---------------------------
+        //-------------------FIN MOSTRAR HABITACIONES------------------------------
 
-        //------------------INICIO MOSTRAR ORIGEN------------------------------
+        //------------------INICIO MOSTRAR ORIGEN----------------------------------
          public void mostrar_origenes()
         {
             DataTable datos = new origen().Listar();
@@ -108,9 +109,9 @@ namespace Hotel_final
                 Console.WriteLine("No hay  origenes registrados.");
             }
         }
-        //----------------FIN MOSTRAR ORIGEN--------------------
+        //------------------------FIN MOSTRAR ORIGEN---------------------------
 
-        //------------------INICIO MOSTRAR TURNO------------------------
+        //-----------------------INICIO MOSTRAR TURNO--------------------------
         public void mostrar_turno()
         {
             DataTable datos = new turno().Listar();
@@ -135,9 +136,9 @@ namespace Hotel_final
                 Console.WriteLine("No hay  turnos registrados.");
             }
         }
-        //------------------FIN MOSTRAR TURNO------------------------
+        //---------------------FIN MOSTRAR TURNO-----------------------------
 
-        //----------------INICIO MOSTRAR PACK------------------------
+        //--------------------INICIO MOSTRAR PACK----------------------------
         public void mostrar_pack()
         {
 
@@ -163,7 +164,7 @@ namespace Hotel_final
                 Console.WriteLine("No hay packs registrados.");
             }
         }
-        //------------------FIN MOSTRAR PACK-------------------------
+        //----------------------FIN MOSTRAR PACK-----------------------------
 
         //-------------------INICIO MOSTRAR TIPO_HABITACIÓN------------------
         public void mostrar_tipo_habitacion()
@@ -191,7 +192,7 @@ namespace Hotel_final
             }
         }//-----------------FIN MOSTRAR TIPO_HABITACIÓN----------------------
 
-        //----------------INICIO MOSTRAR STAFF-------------------------
+        //----------------INICIO MOSTRAR STAFF-------------------------------
         public void mostrar_staff()
         {
             DataTable datos = new staff().Listar();
@@ -216,10 +217,10 @@ namespace Hotel_final
                 Console.WriteLine("No hay staff registrados.");
             }
         }
-        //-----------------FIN MOSTRAR STAFF--------------------------
+        //-----------------FIN MOSTRAR STAFF-----------------------------
 
 
-        //-----------------INICIO MOSTRAR PROVEEDORES--------------
+        //-----------------INICIO MOSTRAR PROVEEDORES--------------------
         public void mostrar_proveedores()
         {
             DataTable datos = new proveedores().Listar();
@@ -246,9 +247,38 @@ namespace Hotel_final
                 }
             }
         }
-        //-----------------FIN MOSTRAR PROVEEDORES-----------------
+        //-----------------FIN MOSTRAR PROVEEDORES----------------------
 
-      
+        //-----------------INICIO MOSTRAR INSUMO------------------------
+        public void mostrar_insumos()
+        {
+            DataTable datos = new insumo().Listar();
+            {
+
+                if (datos.Rows.Count > 0)
+                {
+                    Console.WriteLine("******************************");
+                    Console.WriteLine("Listado de insumos ");
+                    Console.WriteLine("******************************");
+
+                    Console.WriteLine("idpack      idproveedor     nombre       cantidad      vencido");
+                    Console.WriteLine("------------------");
+                    int i = 0;
+                    foreach (DataRow ren in datos.Rows)
+                    {
+                        Console.WriteLine(ren[0] + "\t" + ren[1] + "\t" + ren[2] + "\t" + ren[3] + "\t" + ren[4]);
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay insumos registrados"); 
+                }
+            }
+        }
+        //-----------------FIN MOSTRAR INSUMO---------------------------
+
+
 
 
 

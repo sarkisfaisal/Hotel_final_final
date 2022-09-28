@@ -464,9 +464,51 @@ namespace Hotel_final
             //-------------------------FIN MENÚ PROVEEDORES----------------
 
             //------------------------INICIO MENÚ INSUMOS-------------------
-            //-------------------------FIN MENÚ INSUMOS---------------------
+            static void menu_insumos()
+            {
+                bool fin = true;
+                while (fin)
+                {
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("Menú administración de insumos");
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("1 Ver proveedores insumos existentes. ");
+                    Console.WriteLine("2 Ingresar nuevo insumo. ");
+                    Console.WriteLine("3 Eliminar insumo. ");
+                    Console.WriteLine("4 Modificar insumo. ");
+                    Console.WriteLine("0 Salir. ");
+                    string opc = Console.ReadLine();
+                    string respuesta;
+                    switch (opc)
+                    {
+                        case "1":
+                            new Muestras().mostrar_insumos();
+                            break;
+                        case "2":
+                            respuesta = new Inserciones().crear_insumo();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "3":
+                            respuesta = new Eliminaciones().eliminar_insumo();
+                            Console.ReadLine();
+                            break;
+                        case "4":
+                            break;
+                        case "0":
+                            fin = false;
+                            break;
+                        default:
+                            Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente...");
+                            Console.ReadLine();
+                            break;
+                    }
+                    Console.WriteLine("Enter para continuar");
+                    Console.ReadLine();
+                }
+            }
+                //-------------------------FIN MENÚ INSUMOS---------------------
 
-        }//fin main
+            }//fin main
 
     }// fin class program
 }// fin namespace hotel

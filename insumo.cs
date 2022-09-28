@@ -26,6 +26,11 @@ namespace Hotel_final
             this.vencido = vencido;
 
         }
+        
+        public insumo()
+        {
+            //Es para leer la clase sin necesidad de meterle variables
+        }
         public int GetIdpack()
         {
             return idpack;

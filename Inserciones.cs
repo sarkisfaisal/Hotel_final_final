@@ -8,7 +8,7 @@ namespace Hotel_final
 {
     internal class Inserciones
     {
-      //-------------------------- INICIO CREAR ROL -----------------------
+      //-------------------------- INICIO CREAR ROL ---------------------------
         public string crear_rol()
         {
                 //se inserta el rol en la base de datos
@@ -18,9 +18,9 @@ namespace Hotel_final
                 string respuesta = rol.insertar();
                 return respuesta;
             }
-        // ------------------------FIN CREAR ROL-------------------------------
+        // ------------------------FIN CREAR ROL--------------------------------
 
-        //----------------------INICIO PEDIR PAGO------------------------
+        //----------------------INICIO PEDIR PAGO-------------------------------
         static int pedirtipo_pago()
         {
             bool fin = false;
@@ -45,9 +45,9 @@ namespace Hotel_final
 
             }
         }
-        // ------------------- FIN PEDIR TIPO PAGO --------------------------
+        // ------------------- FIN PEDIR TIPO PAGO ---------------------------
 
-        //------------------INICIO CREAR ORIGEN-----------------
+        //------------------INICIO CREAR ORIGEN-------------------------------
         public string crear_origen()
         {
             Console.WriteLine("Ingrese nombre del origen a agregar");
@@ -55,9 +55,9 @@ namespace Hotel_final
             origen orig = new origen(origen);
             return orig.insertar();
         }
-        //----------------FIN CREAR ORIGEN-------------------
+        //----------------FIN CREAR ORIGEN-----------------------------------
 
-        //-------------------INICIO CREAR TURNO-------------------------
+        //-------------------INICIO CREAR TURNO------------------------------
 
         public string crear_turno()
         {
@@ -66,9 +66,9 @@ namespace Hotel_final
             turno T = new turno(tipo);
             return T.insertar();
         }
-        //--------------------FIN CREAR TURNO-----------------------------
+        //--------------------FIN CREAR TURNO--------------------------------
 
-        //-----------------INCIO CREAR PACK--------------------------
+        //-----------------INCIO CREAR PACK----------------------------------
         public string crear_pack()
         {
             Console.WriteLine("Ingrese nombre del pack a agregar");
@@ -102,7 +102,7 @@ namespace Hotel_final
         }
         //-----------------FIN CREAR STAFF-----------------------------------
 
-        //-----------------CREAR O INGRESAR PROVEEDOR---------------
+        //-----------------CREAR O INGRESAR PROVEEDOR------------------------
         public string crear_proveedor()
         {
             Console.WriteLine("Ingrese el rut del proveedor que desea agregar");
@@ -112,8 +112,26 @@ namespace Hotel_final
             proveedores s = new proveedores(rut, razon_social);
             return s.insertar();
         }
-        //-----------------FIN CREAR PROVEEDOR----------------------
+        //-----------------FIN CREAR PROVEEDOR------------------------------
 
+        //-------------------INICIO CREAR INSUMO----------------------------
+        public string crear_insumo()
+        {
+            Console.WriteLine("Ingrese el idpack correspondiente para crear");
+            int idpack = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el id proveedor correspondiente para crear");
+            int id_proveedor = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el nombre del insumo que desea crear");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese la cantidad de insumos a crear");
+            int cantidad = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese si el insumo se encuentra vencido");
+            string vencido = Console.ReadLine();
 
+            insumo insumo = new insumo();
+            string respuesta = insumo.insertar();
+            return respuesta;
+        }
+        //-------------------FIN CREAR INSUMO-------------------------------
     }
 }
