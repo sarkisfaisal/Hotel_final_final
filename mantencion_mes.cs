@@ -10,15 +10,16 @@ namespace Hotel_string
 {
     internal class mantencion_mes
     {
-        private string obs;
-        private string fecha;
         
+        private string fecha;
+        private string obs;
 
-        public mantencion_mes(string obs, string fecha)
+        public mantencion_mes(string fecha, string obs)
         {
             
-            this.obs = obs;
+            
             this.fecha = fecha;
+            this.obs = obs;
         }
 
         public void SetFecha(string fecha)
@@ -83,7 +84,7 @@ public mantencion_mes()
             conexionbd c = new conexionbd();
             try
             {
-                string insert = $"insert into rol values ('{GetFecha()}','{GetObs()}')";
+                string insert = $"insert into mantencion_mes values ('{GetFecha()}','{GetObs()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
@@ -106,7 +107,7 @@ public mantencion_mes()
                 c.abrir();
                 comando.ExecuteNonQuery();
                 c.cerrar();
-                return "Rol eliminado con éxito";
+                return "Mantencoin mes eliminada con éxito";
             }
             catch (Exception ex)
             {

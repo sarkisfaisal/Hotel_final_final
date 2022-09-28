@@ -80,9 +80,11 @@ namespace Hotel_string
                         Console.WriteLine("7 Menú pack");
                         //Console.WriteLine("8 Menú staff");
                         Console.WriteLine("8 Menú turno");
-                        Console.WriteLine("9 Menú pendiente");
+                        Console.WriteLine("9 Menú orrigenes");
                         Console.WriteLine("10 Menú tipo habitacion");
-                        Console.WriteLine("11 salir");
+                        Console.WriteLine("11 Menú tipo pago");
+                        Console.WriteLine("12 mantencion mes");
+                        Console.WriteLine("30 salir");
                         Console.WriteLine("Ingrese una opción");
                         int op = int.Parse(Console.ReadLine());
 
@@ -126,14 +128,18 @@ namespace Hotel_string
                             case 11:
                                 menu_staff();
                                 break;
+
                             case 12:
+                                menu_mantencion_mes();
+                                break;
+                            case 13:
                                 fin = true;
                                 break;
                             default:
                                 break;
                         }
 
-                        if (op == 11)
+                        if (op == 30)
                         {
                             fin = true;
                             Console.WriteLine("hasta luego");

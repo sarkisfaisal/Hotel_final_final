@@ -70,7 +70,7 @@ namespace Hotel_string
                 c.abrir();
                 var id = comando.ExecuteScalar();
                 c.cerrar();
-                return id.ToString();
+                return "origen creado con exito";
             }
             catch (Exception ex)
             {

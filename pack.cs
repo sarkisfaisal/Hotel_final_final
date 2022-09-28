@@ -34,9 +34,9 @@ namespace Hotel_string
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        /*public void Setfecha(DateOnly fecha) {
+        public void Setfecha(string fecha) {
         this.fecha = fecha;
-        }*/
+        }
 
         public DataTable Listar()
         {
@@ -67,7 +67,7 @@ namespace Hotel_string
             try
             {
                 conexionbd c = new conexionbd();
-                string insert = $"insert into pack values ('{Getdescripcion()}',convert(date,'{Getfecha()}',105))";
+                string insert = $"insert into pack values ('{Getdescripcion()}','{Getfecha()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();
