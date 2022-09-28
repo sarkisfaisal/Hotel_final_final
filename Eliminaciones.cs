@@ -65,7 +65,7 @@ namespace Hotel_final
         //-----------------INICIO ELIMINAR PACK------------------------
         public string eliminar_pack()
         {
-            mostrar_pack();
+            new Muestras().mostrar_pack();
             Console.WriteLine("Ingrese el nombre del pack a eliminar");
             string eliminado = Console.ReadLine();
             DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
