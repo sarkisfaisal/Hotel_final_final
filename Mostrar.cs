@@ -1,4 +1,4 @@
-﻿namespace Hotel_final
+﻿namespace Hotel_string
 {
     internal class Mostrar
     {

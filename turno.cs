@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class turno
     {

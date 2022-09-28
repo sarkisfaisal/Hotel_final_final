@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class Eliminaciones
     {
@@ -65,10 +65,12 @@ namespace Hotel_final
         //-----------------INICIO ELIMINAR PACK------------------------
         public string eliminar_pack()
         {
-            mostrar_pack();
+            //mostrar_pack();
             Console.WriteLine("Ingrese el nombre del pack a eliminar");
             string eliminado = Console.ReadLine();
-            DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
+            Console.WriteLine("Ingrese el fecha del pack a eliminar");
+            string fecha = Console.ReadLine();
+            //DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
             pack P = new pack(eliminado, fecha);
             return P.Eliminar();
 

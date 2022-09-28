@@ -11,7 +11,7 @@ using System.Reflection.PortableExecutable;
 using Microsoft.Identity.Client;
 using System.Runtime.ConstrainedExecution;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     class Program
     {

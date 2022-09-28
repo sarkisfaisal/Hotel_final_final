@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class Inserciones
     {
@@ -73,7 +73,9 @@ namespace Hotel_final
         {
             Console.WriteLine("Ingrese nombre del pack a agregar");
             string tipo = Console.ReadLine();
-            DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
+            Console.WriteLine("Ingrese nombre del pack a agregar");
+            string fecha = Console.ReadLine();
+            //DateOnly fecha = new DateOnly(year: DateTime.Now.Year, month: DateTime.Now.Month, day: DateTime.Now.Day);
             pack P = new pack(tipo, fecha);
             return P.insertar();
         }

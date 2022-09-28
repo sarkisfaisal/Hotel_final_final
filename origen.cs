@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Microsoft.IdentityModel.Logging;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class origen
     {

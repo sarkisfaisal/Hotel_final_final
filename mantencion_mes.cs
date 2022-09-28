@@ -6,17 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class mantencion_mes
     {
-        private string fecha;
         private string obs;
+        private string fecha;
+        
 
-        public mantencion_mes(string fecha, string obs)
+        public mantencion_mes(string obs, string fecha)
         {
-            this.fecha = fecha;
+            
             this.obs = obs;
+            this.fecha = fecha;
         }
 
         public void SetFecha(string fecha)

@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class pack
     {
         private string descripcion;
-        private DateOnly fecha;
+        private string fecha;
 
-        public pack(string descripcion, DateOnly fecha)
+        public pack(string descripcion, string fecha)
         {
             this.descripcion = descripcion;
             this.fecha = fecha;
@@ -27,7 +27,7 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateOnly Getfecha()
+        public string Getfecha()
         {
             return fecha;
         } 
