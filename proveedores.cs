@@ -22,6 +22,11 @@ namespace Hotel_final
         {
             this.rut = rut;
         }
+
+        public proveedores()
+        {
+        }
+
         public string get_rut()
         {
             return rut;
