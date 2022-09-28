@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -276,7 +277,36 @@ namespace Hotel_string
                 }
             }
         }
-        //-----------------FIN MOSTRAR INSUMO---------------------------
+        //--------------------FIN MOSTRAR INSUMO------------------------
+        //----------------INICIO MOSTRAR MANTENCIÓN MES-----------------
+        public void mostrar_mantencion_mes()
+        {
+            DataTable datos = new mantencion_mes().Listar();
+            {
+
+                if (datos.Rows.Count > 0)
+                {
+                    Console.WriteLine("******************************");
+                    Console.WriteLine("Listado de mantenciones realizadas ");
+                    Console.WriteLine("******************************");
+
+                    Console.WriteLine("fecha      obs");
+                    Console.WriteLine("------------------");
+                    int i = 0;
+                    foreach (DataRow ren in datos.Rows)
+                    {
+                        Console.WriteLine(ren[0] + "\t" + ren[1]);
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay mantenciones registradas");
+                }
+            }
+        }
+        //-----------------FIN MOSTRAR MANTENCIÓN MES-------------------
+
 
 
 

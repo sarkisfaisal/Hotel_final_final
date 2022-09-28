@@ -67,7 +67,7 @@ namespace Hotel_string
             try
             {
                 conexionbd c = new conexionbd();
-                string insert = $"insert into pack values ('{Getdescripcion()}','{Getfecha()}')";
+                string insert = $"insert into pack values ('{Getdescripcion()}',convert(date,'{Getfecha()}',105))";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

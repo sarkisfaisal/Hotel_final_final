@@ -9,7 +9,7 @@ namespace Hotel_string
     internal class Eliminaciones
     {
 
-        //--------------- INICIO ELIMINAR ROL ----------------------
+        //--------------- INICIO ELIMINAR ROL --------------------------
         public string eliminar_rol()
         {
             Console.WriteLine("Ingrese una descripción para el rol a eliminar");
@@ -18,9 +18,9 @@ namespace Hotel_string
             string respuesta = rol.Eliminar();
             return respuesta;
         }
-        //--------------------------FIN ELIMINAR ROL ---------------------
+        //--------------------------FIN ELIMINAR ROL --------------------
 
-        //--------------------INICIO ELIMINAR TIPO PAGO----------------------
+        //--------------------INICIO ELIMINAR TIPO PAGO------------------
         public string eliminar_tipo_pago()
         {
             Console.WriteLine("Ingrese una descripción para el tipo de pago a eliminar");
@@ -37,9 +37,9 @@ namespace Hotel_string
                 return "Registro eliminado exitosamente";
             }
         }
-        //----------------FIN ELIMINAR TIPO PAGO-----------------
+        //----------------FIN ELIMINAR TIPO PAGO------------------------
 
-        //---------------INICIO ELIMINAR ORIGEN--------------
+        //---------------INICIO ELIMINAR ORIGEN-------------------------
         public string eliminar_origen()
         {
             Console.WriteLine("Ingrese el nombre del origen a eliminar");
@@ -47,7 +47,7 @@ namespace Hotel_string
             origen origen = new origen(eliminado);
             return origen.Eliminar();
         }
-        //-------------FIN ELIMINAR ORIGEN-------------------
+        //-------------FIN ELIMINAR ORIGEN-------------------------------
 
 
         //------------------INICIO ELIMINAR TURNO------------------------
@@ -60,12 +60,12 @@ namespace Hotel_string
             turno T = new turno(eliminado);
             return T.Eliminar();
         }
-        //----------------FIN ELIMINAR TURNO-------------------------
+        //----------------FIN ELIMINAR TURNO----------------------------
 
-        //-----------------INICIO ELIMINAR PACK------------------------
+        //-----------------INICIO ELIMINAR PACK-------------------------
         public string eliminar_pack()
         {
-            //mostrar_pack();
+            mostrar_pack();
             Console.WriteLine("Ingrese el nombre del pack a eliminar");
             string eliminado = Console.ReadLine();
             Console.WriteLine("Ingrese el fecha del pack a eliminar");
@@ -75,9 +75,9 @@ namespace Hotel_string
             return P.Eliminar();
 
         }
-        //----------------FIN ELIMINAR PACK-------------------------
+        //----------------FIN ELIMINAR PACK----------------------------
 
-        //------------------INICIO ELIMINAR TIPO_HABITACIÓN-------------------
+        //------------------INICIO ELIMINAR TIPO_HABITACIÓN------------
         public string eliminar_tipo_habitacion()
         {
             Console.WriteLine("Ingrese nombre de tipo de habitacion a eliminar");
@@ -89,7 +89,7 @@ namespace Hotel_string
         //----------------FIN ELIMINAR TIPO_HABITACIÓN-----------------
 
 
-        //-----------------INICIO ELIMINAR STAFF---------------------
+        //-----------------INICIO ELIMINAR STAFF-----------------------
 
         public string eliminar_staff()
         {
@@ -100,9 +100,9 @@ namespace Hotel_string
             return s.Eliminar();
         }
 
-        //-----------------FIN ELIMINAR STAFF------------------------
+        //-----------------FIN ELIMINAR STAFF-------------------------
 
-        //-----------------INICIO ELIMINAR PROVEEDOR----------------
+        //-----------------INICIO ELIMINAR PROVEEDOR------------------
         public string eliminar_proveedor()
         {
             Console.WriteLine("Ingrese el rut del proveedor que desea eliminar");
@@ -121,14 +121,14 @@ namespace Hotel_string
                 return "Proveedor eliminado exitosamente";
             }
         }
-        //----------------FIN ELIMINAR PROVEEDOR---------------------
+        //----------------FIN ELIMINAR PROVEEDOR-----------------------
 
-        //-----------------INICIO ELIMINAR INSUMO--------------------
+        //-----------------INICIO ELIMINAR INSUMO----------------------
         public string eliminar_insumo()
         {
             Console.WriteLine("Ingrese el nombre del insumo que desea eliminar");
             string nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese la cantidad de insumos a crear");
+            Console.WriteLine("Ingrese la cantidad de insumos a eliminar");
             int cantidad = Convert.ToInt32(Console.ReadLine());
             insumo i = new insumo();
             int filas = i.Eliminar();
@@ -141,9 +141,21 @@ namespace Hotel_string
                 return "Insumo eliminado exitosamente";
             }
         }
-        //-----------------FIN ELIMINAR INSUMO-----------------------
+        //-------------------FIN ELIMINAR INSUMO-----------------------
+
+        //-------------INICIO ELIMINAR MANTENCIÓN MES------------------
+        public string eliminar_mantencion()
+        {
+            Console.WriteLine("Ingrese la fecha de la mantención que desea eliminar");
+            string fecha = Console.ReadLine();
+            mantencion_mes m = new mantencion_mes();
+            string filas = m.Eliminar();
+            return m.Eliminar();
+        }
+    } //--------------FIN ELIMINAR MANTENCIÓN MES--------------------
+
 
 
 
     }
-}
+

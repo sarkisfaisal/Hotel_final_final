@@ -135,5 +135,20 @@ namespace Hotel_string
             return respuesta;
         }
         //-------------------FIN CREAR INSUMO-------------------------------
+
+        //---------------INICIO CREAR MANTENCIÓN MES------------------------
+        public string registrar_mantencion_mes()
+        {
+            Console.WriteLine("Ingrese la fecha en la cual se realizó la mantención que desea registrar");
+            string fecha = Console.ReadLine();
+            Console.WriteLine("Ingrese su observación sobre mantención que se realizó");
+            string obs = Console.ReadLine();
+           
+
+            mantencion_mes mantencion = new mantencion_mes();
+            string respuesta = mantencion.insertar();
+            return respuesta;
+        }
+        //----------------FIN CREAR MANTENCIÓN MES--------------------------
     }
 }
