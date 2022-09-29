@@ -57,6 +57,30 @@ namespace Hotel_final
             return dtt;
         }
 
+        public DataTable TraerFila(string Id) {
+
+            DataTable dtt;
+            conexionbd c = new conexionbd();
+            try
+            {
+                dtt = new DataTable();
+                string selectUsuario = $"Select top 1 * from rol where idrol = {Id}";
+                SqlCommand cmd = new SqlCommand(selectUsuario, c.conectarbd);
+                cmd.CommandType = CommandType.Text;
+                c.abrir();
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtt);
+                c.cerrar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtt;
+        }
+
         public string insertar()
         {
             conexionbd c = new conexionbd();
@@ -92,6 +116,24 @@ namespace Hotel_final
                 return ex.Message;
             }
         }//fin eliminar
+
+        public string modificar(string descripcionAntigua)
+        {
+            conexionbd c = new conexionbd();
+            try
+            {
+                string insert = $"update rol set descripcion = {Getdescripcion}  where descripcion = {descripcionAntigua}')";
+                SqlCommand comando = new SqlCommand(insert, c.conectarbd);
+                c.abrir();
+                int com = comando.ExecuteNonQuery();
+                c.cerrar();
+                return "Rol creado con éxito";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 
 }
