@@ -103,9 +103,9 @@ namespace Hotel_final
                             case 5:
                                 menu_proveedores();
                                 break;
-                           // case 6:
-                                //menu_insumos();
-                             //   break;
+                            case 6:
+                                menu_insumos();
+                                break;
                             case 7:
                                 menu_pack();
                                 break;
@@ -506,9 +506,56 @@ namespace Hotel_final
                     Console.ReadLine();
                 }
             }
-                //-------------------------FIN MENÚ INSUMOS---------------------
+            //-------------------------FIN MENÚ INSUMOS-----------------------
 
-            }//fin main
+            //----------------------INICIO MENÚ MANTENCIÓN MES----------------
+            static void menu_mantencion_mes()
+            {
+                bool fin = true;
+                while (fin)
+                {
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("Menú administración de mantenciones");
+                    Console.WriteLine("*******************************");
+                    Console.WriteLine("1 Ver mantenciones registradas. ");
+                    Console.WriteLine("2 Ingresar nueva mantención. ");
+                    Console.WriteLine("3 Eliminar mantención registrada. ");
+                    Console.WriteLine("4 Modificar mantención registrada. ");
+                    Console.WriteLine("0 Salir. ");
+                    string opc = Console.ReadLine();
+                    string respuesta;
+                    switch (opc)
+                    {
+                        case "1":
+                            new Muestras().mostrar_mantencion_mes();
+                            break;
+                        case "2":
+                            respuesta = new Inserciones().registrar_mantencion_mes();
+                            Console.WriteLine(respuesta);
+                            break;
+                        case "3":
+                            respuesta = new Eliminaciones().eliminar_mantencion();
+                            Console.ReadLine();
+                            break;
+                        case "4":
+                            break;
+                        case "0":
+                            fin = false;
+                            break;
+                        default:
+                            Console.WriteLine("No se reconoce la opción ingresada, intente nuevamente...");
+                            Console.ReadLine();
+                            break;
+                    }
+                    Console.WriteLine("Enter para continuar");
+                    Console.ReadLine();
+                }
+            }
+            //------------------------FIN MENÚ MANTENCIÓN---------------------
+
+
+
+        }//fin main
 
     }// fin class program
 }// fin namespace hotel

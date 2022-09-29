@@ -61,7 +61,7 @@ namespace Hotel_final
             return T.Eliminar();
         }
         //----------------FIN ELIMINAR TURNO----------------------------
-        
+
         //-----------------INICIO ELIMINAR PACK-------------------------
         public string eliminar_pack()
         {
@@ -126,7 +126,7 @@ namespace Hotel_final
         {
             Console.WriteLine("Ingrese el nombre del insumo que desea eliminar");
             string nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese la cantidad de insumos a crear");
+            Console.WriteLine("Ingrese la cantidad de insumos a eliminar");
             int cantidad = Convert.ToInt32(Console.ReadLine());
             insumo i = new insumo();
             int filas = i.Eliminar();
@@ -139,9 +139,21 @@ namespace Hotel_final
                 return "Insumo eliminado exitosamente";
             }
         }
-        //-----------------FIN ELIMINAR INSUMO------------------------
+        //-------------------FIN ELIMINAR INSUMO-----------------------
+
+        //-------------INICIO ELIMINAR MANTENCIÓN MES------------------
+        public string eliminar_mantencion()
+        {
+            Console.WriteLine("Ingrese la fecha de la mantención que desea eliminar");
+            string fecha = Console.ReadLine();
+            mantencion_mes m = new mantencion_mes();
+            string filas = m.Eliminar();
+            return m.Eliminar();
+        }
+    } //--------------FIN ELIMINAR MANTENCIÓN MES--------------------
+
 
 
 
     }
-}
+
