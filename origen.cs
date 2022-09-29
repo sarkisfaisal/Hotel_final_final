@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Microsoft.IdentityModel.Logging;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class origen
     {
@@ -70,7 +70,7 @@ namespace Hotel_final
                 c.abrir();
                 var id = comando.ExecuteScalar();
                 c.cerrar();
-                return id.ToString();
+                return "origen creado con exito";
             }
             catch (Exception ex)
             {

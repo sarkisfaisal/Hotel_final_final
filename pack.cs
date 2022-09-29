@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class pack
     {
         private string descripcion;
-        private DateOnly fecha;
+        private string fecha;
 
-        public pack(string descripcion, DateOnly fecha)
+        public pack(string descripcion, string fecha)
         {
             this.descripcion = descripcion;
             this.fecha = fecha;
@@ -27,16 +27,16 @@ namespace Hotel_final
         public string Getdescripcion() { 
             return descripcion;
         }
-        public DateOnly Getfecha()
+        public string Getfecha()
         {
             return fecha;
         } 
         public void Setdescripcion(string descripcion) { 
             this.descripcion = descripcion;
         }
-        /*public void Setfecha(DateOnly fecha) {
+        public void Setfecha(string fecha) {
         this.fecha = fecha;
-        }*/
+        }
 
         public DataTable Listar()
         {
@@ -67,7 +67,7 @@ namespace Hotel_final
             try
             {
                 conexionbd c = new conexionbd();
-                string insert = $"insert into pack values ('{Getdescripcion()}',convert(date,'{Getfecha()}',105))";
+                string insert = $"insert into pack values ('{Getdescripcion()}','{Getfecha()}')";
                 SqlCommand comando = new SqlCommand(insert, c.conectarbd);
                 c.abrir();
                 comando.ExecuteNonQuery();

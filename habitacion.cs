@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class habitacion
     {

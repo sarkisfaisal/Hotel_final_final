@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_final
+namespace Hotel_string
 {
     internal class insumo
     {
